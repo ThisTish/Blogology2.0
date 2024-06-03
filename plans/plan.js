@@ -182,3 +182,45 @@ router.get('/blogs/:id', (req, res)=>{
 // THEN I am signed out of the site
 // WHEN I am idle on the site for more than a set time
 // THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
+
+
+// *ROUTES/ENDPOINTS TO MAKE
+//? generalize into groups?
+'/'
+'/signup'
+'/login'
+'/blogs'
+'/dashboard'
+'/newBlog'
+
+
+// *MODELS TO MAKE
+// Blog,
+// Comment,
+// User
+// User hasMany Blog
+// User hasMany Comment
+// Blog hasMany Comment
+
+// todo research more to see what goes where.
+// *HANDLEBARS TO MAKE
+// main.handlebars
+	// *PARTIALS
+
+	// *SUBLAYOUTS
+//   blogs.handlebars
+//   signup.handlebars
+//   login.handlebars
+//   blog.handlebars
+//   dashboard.handlebars
+//   newBlog.handlebars
+//   editBlog.handlebars
+	// *HELPERS
+
+
+// 1. Get database & tables set up
+// 2. sync sequelize and server
+// 3. Work on routes by testing by action
+// 4. Work on handlebars rendering
+// 5. design
+
