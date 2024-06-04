@@ -11,4 +11,5 @@
 // }
 
 //* Blog, Comment, User models made
-// ? do i need a join model?
+
+// onDelete: CASCADE -when user deleted blog deleted & when blog deleted related to comment

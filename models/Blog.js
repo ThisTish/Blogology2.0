@@ -1,4 +1,4 @@
-const {Model, DataTypes, STRING} = require('sequelize')
+const {Model, DataTypes} = require('sequelize')
 const sequelize = require('../config/connection')
 
 class Blog extends Model{}
@@ -24,8 +24,7 @@ Blog.init(
 			allowNull: false,
 			references: {
 				model: 'blog',
-				key: 'created_at'//createdAt?
-				// this might work, if not make format_time function. from createdAt timestamp
+				key: 'createdAt'
 			}
 		},
 		created_by: {
@@ -35,7 +34,15 @@ Blog.init(
 				model: 'User',
 				key:'user_id'
 			}
+			},
+		comment_id:{
+			type: DataTypes.INTEGER,
+			allowNull: true,
+			references:{
+				model: 'comment',
+				key: 'comment_id'
 			}
+		}
 		
 	},
 	{
