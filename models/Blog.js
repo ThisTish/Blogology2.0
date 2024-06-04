@@ -5,7 +5,7 @@ class Blog extends Model{}
 
 Blog.init(
 	{
-		id:{
+		blog_id:{
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true,
@@ -19,23 +19,33 @@ Blog.init(
 			type: DataTypes.TEXT,
 			allowNull: false
 		},
-		createdOn:{
-			type: DataTypes.DATE,
-			allowNull: false
+		created_on:{
+			type: DataTypes.DATEONLY,
+			allowNull: false,
+			references: {
+				model: 'blog',
+				key: 'created_at'//createdAt?
+				// this might work, if not make format_time function. from createdAt timestamp
+			}
 		},
-		createdById: {
+		created_by: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references:{
 				model: 'User',
-				key:'id'
+				key:'user_id'
 			}
 			}
 		
 	},
 	{
 	sequelize,
-	// todo options/constraints
+	freezeTableName: true,
+	underscored: true,
+	modelName: 'blog',
+	timestamps: true,
+	createdAt: true,
+	updatedAt: false
 	}
 )
 
