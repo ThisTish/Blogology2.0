@@ -124,12 +124,14 @@ router.get('/signup', (req, res) => res.render('signup'))
 // WHEN I click on the dashboard option in the navigation
 // THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
 	// todo dashboard.handlbars
+		// {{#if loggedIn}}
 		// {{#if blogs}}
 		// <render blog cards>
 		// {{else}}
 		// <p>Create your first post!</p
 		// {{/if}}
 		// <btn><a href="/newblog">New Blog</a></btn>
+		// {{/if}}
 	router.get('/dashborad', (req, res) =>{
 		Blog.findAll({
 			where: {createdById : loggedInId}// something like this.
@@ -150,6 +152,7 @@ router.get('/signup', (req, res) => res.render('signup'))
 			"title": req.body.title,
 			"content": req.body.content,
 			"author": loggedIn.username,//getting closer
+			// session.username?
 			"createdOn": createdOnTimestamp
 		}
 		.then((post) = res.redirect('/dashboard'))
@@ -206,17 +209,27 @@ router.get('/blogs/:id', (req, res)=>{
 // *HANDLEBARS TO MAKE
 // main.handlebars
 	// *PARTIALS
+	// comment-details.handlebars--goes in blog(& maybe edit blog)
+	// blog-form.handlebars -- used for new post & editing
+	// user-form.handlebars -- used for login / sign up
+	// blog-details.handlbars -- used for homepage & blog
+	// blog-headers.handlbars -- used in dashboard
+	// comment-form -- used in blog
 
 	// *SUBLAYOUTS
-//   blogs.handlebars
-//   signup.handlebars
-//   login.handlebars
-//   blog.handlebars
-//   dashboard.handlebars
-//   newBlog.handlebars
-//   editBlog.handlebars
+//   dashboard.handlebars//?how would you make another layout if you wanted another skeleton for this?
+//   blogs.handlebars--for each blog of blogs >blog-details
+//   signup.handlebars-- >user-form (buttons based on endpoint?)
+//   login.handlebars--  >user-form (buttons based on endpoint?)
+//   blog.handlebars-- >blog-details(once) & >comment-details & >comment-form//?maybe make a button to add comment?
+//   newBlog.handlebars-- >blog-form(empty with create buttons)
+//   editBlog.handlebars-- >blog-form(filled with values and with edit/cancel/delete buttons)
 	// *HELPERS
 
+
+// *js
+	// login
+	// logout
 
 // 1. Get database & tables set up
 // 2. sync sequelize and server
@@ -224,3 +237,7 @@ router.get('/blogs/:id', (req, res)=>{
 // 4. Work on handlebars rendering
 // 5. design
 
+// *remember to serialize-.get({plain:true}) lesson 7
+	// sequelize documentation
+
+// render two projects. one for database, one for front end

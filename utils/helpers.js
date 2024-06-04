@@ -4,3 +4,5 @@ module.exports = {
 	}
 }
 // a place for little functions used a lot.
+// login
+// logout
