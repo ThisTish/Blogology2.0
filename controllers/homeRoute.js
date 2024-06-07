@@ -1,6 +1,9 @@
 // todo 
-// *all example right now. will make it work for project.
 
+router.get('/', (req, res) =>{
+	Blog.findAll({raw:true})
+	.then((blogs) => res.render('blogs', ({blogs})))
+})
 
 // const router = require('express').Router();
 

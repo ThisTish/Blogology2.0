@@ -1,15 +1,23 @@
-// bring in all models and assign associations
-// *example
-// const Model = require('./Model')
-// todo
-// Blogs have many comments....
-// Users have many blogs...
-// Users have many comments...
-// *partial
-// module.exports = {
-// 	Model, Blog, User, Comment
-// }
+const Blog = require('./Model')
+const Comment = require('./Model')
+const User = require('./Model')
 
-//* Blog, Comment, User models made
+User.hasMany(Blog,{
+	foreignKey: 'user_id',
+	onDelete: 'CASCADE'
+})
 
-// onDelete: CASCADE -when user deleted blog deleted & when blog deleted related to comment
+Blog.hasMany(Comment,{
+	foreignKey: 'blog_id',
+	onDelete: 'CASCADE'
+})
+
+Blog.belongsTo(User, {
+	foreignKey: 'user_id',	
+})
+
+Comment.belongsTo(Blog, {
+	foreignKey: 'blog_id',	
+})
+
+module.exports = { Model, Blog, User, Comment }
