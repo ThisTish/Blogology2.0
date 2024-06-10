@@ -15,10 +15,9 @@
 <!-- - Sync Sequelize models with the database. -->
 
 ## seeds
-- blog
-- user
-- comment
-- STUCK -ERRORS -SOMETHING WRONG. IT HAPPENED BEFORE AND I CAN'T REMEMBER HOW RIGHT NOW.
+- blog <!--todo create seed comments & created by -->
+<!-- - user -->
+<!-- - comment -->
 
 ## Routes and Controllers
 ### General Routes

@@ -1,9 +1,8 @@
-// todo 
-// *also example, going to tie in middleware?
+const router = require('express').Router()
+const apiRoutes = require('./api')
+const homeRoutes = require('./homeRoute')
 
-// const router = require('express').Router();
-// const homeRoutes = require('./homeRoutes');
+router.use('/', homeRoutes)
+router.use('/api', apiRoutes)
 
-// router.use('/', homeRoutes);
-
-// module.exports = router;
+module.exports = router;
