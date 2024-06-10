@@ -11,24 +11,23 @@ Comment.init({
 	},
 	comment: {
 		type: DataTypes.TEXT,
-		allowNull: true,
+		allowNull: false,
 	},
 	blog_id: {
 		type: DataTypes.INTEGER,
-		allowNull: true,
+		allowNull: false,
 		references: {
 			model: 'blog',
 			key: 'blog_id'
 		}
-	// },
-	// user_id: {
-	// 	type: DataTypes.INTEGER,
-	// 	allowNull: false,
-	// 	references:{
-	// 		model: 'user',
-	// 		key: 'user_id'
-	// 		//todo logged in user
-	// 	}
+	},
+	user_id: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		references:{
+			model: 'user',
+			key: 'user_id'
+		}
 	}
 },
 {

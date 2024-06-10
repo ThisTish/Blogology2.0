@@ -1,11 +1,9 @@
 GET http://localhost:3000
 
 ###
-
-GET http://localhost:3000/api/blog/1
+GET http://localhost:3000/api/blog/4
 
 ###
-
 POST  http://localhost:3000/api/blog
 Content-Type: application/json
 
@@ -24,7 +22,6 @@ Content-Type: application/json
 }
 
 ###
-
 DELETE  http://localhost:3000/api/blog/3
 
 ###
@@ -38,7 +35,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:3000/api/users/signup
 Content-Type: application/json
 
@@ -49,18 +45,31 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:3000/api/users/logout
 
 ###
-
 GET http://localhost:3000/api/users
 
 ###
 
-
-DELETE http://localhost:3000/deleteBlog/1
+###
+GET http://localhost:3000/api/comments
 
 ###
+POST  http://localhost:3000/api/blog/4/comment
+Content-Type: application/json
 
-GET http://localhost:3000/sessions
+{
+	"comment": "this is a comment"
+}
+
+###
+PUT http://localhost:3000/api/comments/1
+Content-Type: application/json
+
+{
+	"blog_id": 1
+}
+
+###
+DELETE http://localhost:3000/api/comments/1

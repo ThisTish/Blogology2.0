@@ -64,6 +64,14 @@ User.init({
 				msg: 'Password is required'
 			}
 		}
+	},
+	comment_id:{
+		type: DataTypes.INTEGER,
+		allowNull: true,
+		references:{
+			model: 'comment',
+			key: 'comment_id'
+		}
 	}
 },
 {

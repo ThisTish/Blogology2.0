@@ -2,7 +2,6 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const path = require('path')
-
 const sequelize = require('./config/connection')
 const sequelizeStore = require('connect-session-sequelize')(session.Store)
 const colors = require('colors')
@@ -44,7 +43,6 @@ const sess = {
 
 app.use(session(sess))
 
-// const hbs = exphbs.create({helpers
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
@@ -54,10 +52,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(reqLog)
 app.use(routes)
-
-app.get('/sessions', async (req, res) => {
-	const sessions = await sequelize.models.Session.findAll()
-	res.json(sessions)
-})
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT} will be your server today. Enjoy!`.magenta))

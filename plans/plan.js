@@ -63,37 +63,38 @@ const { now } = require("sequelize/lib/utils")
 		// <input type="text" name="password" id="blah" class="blah" placeholder="?" maxlength="25" value="{{password}}">
 		// <input type="submit" value="sign-up" class="btn">
 
-//! WHEN I click on the sign-up button
-//! THEN my user credentials are saved and I am logged into the site
-	// *signUpRoute-turn async?
-	router.post('/', (req, res) =>{
-		let {username, password} = req.body
-		User.create({
-			username,
-			password
-		})
-		.then((login) => res.redirect('/dashboard'))
-		.catch()//todo make catch error handler(helpers)look at sequelizeTraversy practice
-	})
-// todo create model for User-add hook to modal for hashing password on create
-// todo add validations and catches
+//// WHEN I click on the sign-up button
+////THEN my user credentials are saved and I am logged into the site
+	// // *signUpRoute-turn async?
+	// router.post('/', (req, res) =>{
+	// 	let {username, password} = req.body
+	// 	User.create({
+	// 		username,
+	// 		password
+	// 	})
+	// 	.then((login) => res.redirect('/dashboard'))
+		// .catch()
+	// })
+//  create model for User-add hook to modal for hashing password on create
+//  add validations and catches
 
 //! WHEN I revisit the site at a later time and choose to sign in
 //! THEN I am prompted to enter my username and password
-// todo make sure there is a limit on session/cookie.
+// todo test by changing the time on the cookie
+//  make sure there is a limit on session/cookie.
 // todo create login form - login.handlbars
 	// router.get('/login', (req, res) => res.render('login'))//in home-routes.js controller with if statements of if logged in, redirect('/dashboard' or '/')
-// todo finish login logic for loginRoute
-	router.post('/login', (req, res) =>{
-		let {username, password} = req.body
-		User.findOne({
-			where:{
-				username: username
-				// validate password.
-				//* example loggin logic in 14MVC 01-17-controllers-api-user-routes.js(andlogout)
-			}
-		})
-	})
+// // finish login logic for loginRoute
+	// router.post('/login', (req, res) =>{
+	// 	let {username, password} = req.body
+	// 	User.findOne({
+	// 		where:{
+	// 			username: username
+	// 			// validate password.
+	// 			// example loggin logic in 14MVC 01-17-controllers-api-user-routes.js(andlogout)
+	// 		}
+	// 	})
+	// })
 
 //// WHEN I am signed in to the site
 //// THEN I see navigation links for the homepage, the dashboard, and the option to log out
@@ -111,12 +112,12 @@ const { now } = require("sequelize/lib/utils")
 		// {{#if comments}}
 		// <render comments>
 		// {{/if}}
-	// * get postRoute
-	app.get('/blogs/:id', (req, res) =>{
-		Blog.findByPk(req.params.id)
-			.then((blog) => res.render('blog', {blog}))//make sure to include comment & user information
-			.catch(error)
-	})
+	//  get postRoute
+	// app.get('/blogs/:id', (req, res) =>{
+	// 	Blog.findByPk(req.params.id)
+	// 		.then((blog) => res.render('blog', {blog}))//make sure to include comment & user information
+	// 		.catch(error)
+	// })
 
 //! WHEN I enter a comment and click on the submit button while signed in
 //! THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
@@ -134,16 +135,16 @@ const { now } = require("sequelize/lib/utils")
 
 //! WHEN I click on the dashboard option in the navigation
 //! THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-// * get dashboardRoute
-router.get('/dashborad', (req, res) =>{
-	Blog.findAll({
-		where: {createdById : loggedInId}//? something like this.
-	})
-		.then((blogs) =>{
-			res.render('dashboard', {blogs})
-		})
-		.catch(error => console.log(error))
-})
+//  get dashboardRoute
+// router.get('/dashborad', (req, res) =>{
+// 	Blog.findAll({
+// 		where: {createdById : loggedInId}//? something like this.
+// 	})
+// 		.then((blogs) =>{
+// 			res.render('dashboard', {blogs})
+// 		})
+// 		.catch(error => console.log(error))
+// })
 	// todo dashboard.handlbars
 		// {{#if loggedIn}}
 		// {{#if blogs}}
@@ -159,22 +160,22 @@ router.get('/dashborad', (req, res) =>{
 // * render newblog.handlebars
 router.get('/newblog', (req, res) => res.render('newblog'))
 	// todo newblog.handlebars
-		// *partially done
+		//partially done
 		// <blog form>
 		// <input type="text" action="/newblog" method = "POST">
-	// * post newBlogRoute
-	router.post('/newblog', (req, res) =>{
-		Blog.create(req.body)
-			const post ={
-			"title": req.body.title,
-			"content": req.body.content,
-			"author": loggedIn.username,//getting closer
-			// session.username?
-			"createdOn": createdOnTimestamp
-		}
-		.then((post) = res.redirect('/dashboard'))
-		.catch((error)=>console.log(error))
-	})
+	// //  post newBlogRoute
+	// router.post('/newblog', (req, res) =>{
+	// 	Blog.create(req.body)
+	// 		const post ={
+	// 		"title": req.body.title,
+	// 		"content": req.body.content,
+	// 		"author": loggedIn.username,//getting closer
+	// 		// session.username?
+	// 		"createdOn": createdOnTimestamp
+	// 	}
+	// 	.then((post) = res.redirect('/dashboard'))
+	// 	.catch((error)=>console.log(error))
+	// })
 //// WHEN I click on the button to create a new blog post
 //// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 //! WHEN I click on one of my existing posts in the dashboard
@@ -198,18 +199,18 @@ router.get('/blogs/:id', (req, res)=>{
 	})
 	
 // todo study express sessions for this.....stuff..
-// WHEN I click on the logout option in the navigation
-// THEN I am signed out of the site
+// //WHEN I click on the logout option in the navigation
+// //THEN I am signed out of the site
 // WHEN I am idle on the site for more than a set time
 // THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
 
 
 // *ROUTES/ENDPOINTS TO MAKE
 //? generalize into groups?
-'/'
-'/signup'
-'/login'
-'/blogs'
+// '/'
+// '/signup'
+// '/login'
+// '/blogs'
 '/dashboard'
 '/newBlog'
 

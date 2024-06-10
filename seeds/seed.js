@@ -14,11 +14,7 @@ try {
 		individualHooks: true,
 		returning: true
 	})
-
-	const comments = await Comment.bulkCreate(commentData, {
-		returning: true
-	})
-
+	
 	const blogs = await Blog.bulkCreate(blogData)
 		console.log('Database seeded'.yellow)
 	// const data = [users, comments, blogs]
@@ -26,6 +22,12 @@ try {
 	} catch (error) {
 		console.log('error! error! error'.red, error)
 	}
+	
+	const comments = await Comment.bulkCreate(commentData, {
+		returning: true
+	})
+
+	sequelize.close()
 }
 
 seedData()
