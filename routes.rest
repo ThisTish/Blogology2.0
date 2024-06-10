@@ -1,3 +1,29 @@
 GET http://localhost:3000
 
 ###
+
+GET http://localhost:3000/api/blog/1
+
+###
+
+POST http://localhost:3000/createBlog
+Content-Type: application/json
+
+{
+	"title": "My first blog post",
+	"content": "This is my first blog post"
+}
+
+###
+
+PUT http://localhost:3000/updateBlog/1
+Content-Type: application/json
+
+{
+	"title": "My blog post",
+	"content": "This is my second blog post"
+}
+
+###
+
+DELETE http://localhost:3000/deleteBlog/1

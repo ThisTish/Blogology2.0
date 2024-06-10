@@ -1,13 +1,14 @@
 const express = require('express');
-const Blog = require('../models/Blog');
+const Blog = require('../../models/Blog');
+const { where } = require('sequelize');
 
 const router = express.Router();
 
 router.get('/:id', async (req, res) => {
 	try {
 		const id = req.params.id;
-		const blog = await Blog.findAll(id)
-		if(!blogs) {
+		const blog = await Blog.findOne({where: { blog_id: id }})
+		if(!blog) {
 			return res.status(404).json({ message: 'No blogs found' });
 		}
 		res.json(blog);
