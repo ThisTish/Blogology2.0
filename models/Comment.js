@@ -9,9 +9,9 @@ Comment.init({
 		primaryKey: true,
 		autoIncrement: true
 	},
-	text: {
+	comment: {
 		type: DataTypes.TEXT,
-		allowNull: false,
+		allowNull: true,
 	},
 	blog_id: {
 		type: DataTypes.INTEGER,

@@ -10,11 +10,11 @@ POST http://localhost:3000
 Content-Type: application/json
 
 {
-	"username": "gabry",
-	"password1": "destination",
-	"password2": "destination"
+	"username": "apparat",
+	"password": "soapskin"
 }
 
+	# "password2": "soapskin"
 ###
 
 GET http://localhost:3000/api/users
@@ -31,3 +31,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/deleteBlog/1
+
+###
+
+GET http://localhost:3000/sessions

@@ -1,6 +1,6 @@
 <ul>
-	{{#each blogs}}
-		<li>{{blogs.title}}</li>
-			<p>{{blogs.text}} </p>
+	{{#each blogs as |blog|}}
+		<li><a href="/blog/{{blog.id}}">{{blog.title}}</a></li>
+			<p>{{blog.text}} </p>
 	{{/each}}
 </ul>
