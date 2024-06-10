@@ -116,3 +116,4 @@ async function getUsers(req, res) {
 
 module.exports = router
 
+// todo seperate controllers from routes into respective folders

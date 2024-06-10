@@ -6,6 +6,10 @@ GET http://localhost:3000/api/blog/1
 
 ###
 
+DELETE  http://localhost:3000/api/blog/3
+
+###
+
 POST http://localhost:3000/api/users/login
 Content-Type: application/json
 

@@ -24,16 +24,15 @@
 <!-- - **Homepage (`'/'`)**: Display all blogs. -->
 - **Signup (`'/signup'`)**: Show signup form
 - **Login (`'/login'`)**: Show login form.
-- **Individual Blog (`'/blogs/:id'`)**: Display a single blog with comments.
-  <!-- !route returning data, not showing through handlebars -->
+<!-- - **Individual Blog (`'/blogs/:id'`)**: Display a single blog with comments. -->
 - **Dashboard (`'/dashboard'`)**: Display user-specific blogs.
 - **New Blog (`'/newBlog'`)**: Show form to create a new blog.
 - **Edit Blog (`'/blogs/:id/edit'`)**: Show form to edit a specific blog.
 
 ### Auth Routes
-- **Sign Up (`POST /signup`)**: Handle user registration.
-- **Login (`POST /login`)**: Handle user authentication.
-- **Logout (`GET /logout`)**: Handle user logout.
+<!-- - **Sign Up (`POST /signup`)**: Handle user registration. -->
+<!-- - **Login (`POST /login`)**: Handle user authentication. -->
+<!-- - **Logout (`GET /logout`)**: Handle user logout. -->
 
 ### Blog Routes
 - **Create Blog (`POST /newBlog`)**: Handle creating a new blog post.
@@ -43,11 +42,9 @@
 
 ## Handlebars Templates
 ### Main Layout
-- `main.handlebars`
-  - **Partials**: Navigation, Footer, etc.
 
 ### Views
-- **Blogs Listing**: `blogs.handlebars`
+<!-- - **Blogs Listing**: `blogs.handlebars` -->
 - **Signup**: `signup.handlebars`
 - **Login**: `login.handlebars`
 - **Single Blog**: `blog.handlebars`
