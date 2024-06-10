@@ -22,9 +22,11 @@
 ## Routes and Controllers
 ### General Routes
 - **Homepage (`'/'`)**: Display all blogs.
-- **Signup (`'/signup'`)**: Show signup form.
+  <!-- !route returning data, not showing through handlebars -->
+- **Signup (`'/signup'`)**: Show signup form
 - **Login (`'/login'`)**: Show login form.
 - **Individual Blog (`'/blogs/:id'`)**: Display a single blog with comments.
+  <!-- !route returning data, not showing through handlebars -->
 - **Dashboard (`'/dashboard'`)**: Display user-specific blogs.
 - **New Blog (`'/newBlog'`)**: Show form to create a new blog.
 - **Edit Blog (`'/blogs/:id/edit'`)**: Show form to edit a specific blog.

@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Blog = require('../../models/Blog')
 const { Sequelize } = require('sequelize')
 
-
+// get blog by id
 router.get('/:id', async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -15,6 +15,8 @@ router.get('/:id', async (req, res) => {
 		console.error(err)
 		res.status(500).json({ message: 'Server Error' })
 	}
-});
+})
+
+// todo display associated comments
 
 module.exports = router

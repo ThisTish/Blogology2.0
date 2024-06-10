@@ -6,15 +6,19 @@ GET http://localhost:3000/api/blog/1
 
 ###
 
-POST http://localhost:3000/createBlog
+POST http://localhost:3000
 Content-Type: application/json
 
 {
-	"title": "My first blog post",
-	"content": "This is my first blog post"
+	"username": "gabry",
+	"password1": "destination",
+	"password2": "destination"
 }
 
 ###
+
+GET http://localhost:3000/api/users
+
 
 PUT http://localhost:3000/updateBlog/1
 Content-Type: application/json

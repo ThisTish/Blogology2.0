@@ -1,17 +1,23 @@
-const express = require('express');
-const User = require('../../models/User');
+// todo placeholder for now
 
-const router = express.Router();
+const express = require('express')
+const User = require('../../models/User')
+
+const router = express.Router()
 
 // GET /api/users
-router.get('/', async (req, res) => {
+async function getUsers(req, res) {
 	try {
-		const users = await User.find();
-		res.json(users);
+		const users = await User.findAll()
+		res.json(users)
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Server Error' });
+		console.log(err)
+		res.status(500).json({ message: 'Server Error' })
 	}
-});
+}
 
-module.exports = router;
+// route to run getUsers
+router.get('/', getUsers)
+
+module.exports = getUsers
+
