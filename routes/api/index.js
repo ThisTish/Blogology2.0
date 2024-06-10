@@ -1,4 +1,8 @@
 const router = require('express').Router()
+const { Blog, User, Comment } = require('../../models')
+const blogRoutes = require('./blog-routes')
+
+router.use('/blogs', blogRoutes)
 // todo require routes from directory
 // *const blogRoutes = require('./blog-routes')
 

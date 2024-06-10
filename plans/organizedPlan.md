@@ -2,17 +2,23 @@
 
 ## Database & Models Setup
 - **Models**:
-  - Blog
-  - Comment
-  - User
+  <!-- - Blog -->
+  <!-- - Comment -->
+  <!-- - User -->
 - **Associations**:
-  - User hasMany Blog
-  - User hasMany Comment
-  - Blog hasMany Comment
+  <!-- - User hasMany Blog -->
+  <!-- - User hasMany Comment -->
+  <!-- - Blog hasMany Comment -->
 
 ## Sync Sequelize and Server
-- Establish database connection.
-- Sync Sequelize models with the database.
+<!-- - Establish database connection. -->
+<!-- - Sync Sequelize models with the database. -->
+
+## seeds
+- blog
+- user
+- comment
+- STUCK -ERRORS -SOMETHING WRONG. IT HAPPENED BEFORE AND I CAN'T REMEMBER HOW RIGHT NOW.
 
 ## Routes and Controllers
 ### General Routes

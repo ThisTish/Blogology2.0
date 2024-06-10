@@ -15,19 +15,20 @@ Comment.init({
 	},
 	blog_id: {
 		type: DataTypes.INTEGER,
-		allowNull: false,
+		allowNull: true,
 		references: {
 			model: 'blog',
 			key: 'blog_id'
 		}
-	},
-	user_id: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-		references:{
-			model: 'user',
-			key: 'user_id'
-		}
+	// },
+	// user_id: {
+	// 	type: DataTypes.INTEGER,
+	// 	allowNull: false,
+	// 	references:{
+	// 		model: 'user',
+	// 		key: 'user_id'
+	// 		//todo logged in user
+	// 	}
 	}
 },
 {

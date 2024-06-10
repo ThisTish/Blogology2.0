@@ -15,26 +15,26 @@ Blog.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		description:{
+		text:{
 			type: DataTypes.TEXT,
 			allowNull: false
 		},
-		created_on:{
-			type: DataTypes.DATEONLY,
-			allowNull: false,
-			references: {
-				model: 'blog',
-				key: 'createdAt'
-			}
-		},
-		created_by: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			references:{
-				model: 'User',
-				key:'user_id'
-			}
-			},
+		// created_on:{
+		// 	type: DataTypes.DATEONLY,
+		// 	allowNull: false,
+		// 	references: {
+		// 		model: 'blog',
+		// 		key: 'createdAt'
+		// 	}
+		// },
+		// created_by: {
+		// 	type: DataTypes.INTEGER,
+		// 	allowNull: false,
+		// 	references:{
+		// 		model: 'User',
+		// 		key:'user_id'
+		// 	}
+		// 	},
 		comment_id:{
 			type: DataTypes.INTEGER,
 			allowNull: true,

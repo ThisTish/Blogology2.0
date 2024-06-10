@@ -1,3 +1,50 @@
-{{!-- ?basic html --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blogology</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+		<h1>BLOGOLOGY</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href='/'>Home,</a>
+				</li>
+				
+				{{#if loggedIn}}
+				<li>
+					<a href="/dashboard">dashboard</a>
+				</li>
+				<li>
+					<a href ="/logout">Logout</a>
+				</li>
+					
+				{{else}}
+				<li>
+					<a href="/login">Login</a>
+				</li>
+				<li>
+					<a href="/signup">Sign Up</a>
+				</li>
+				<li>
+				</li>
+				{{/if}}
+					{{!-- <a href="/api/blogs">Blogs</a> --}}
+			</ul>
+		</nav>
+	</header>
+	<main>
+		{{{body}}}
+	</main>
 
-{{!-- ? todo make others for other pages? --}}
+	<footer>
+	</footer>
+
+	{{!-- <script src="../../public/js/login.js"></script>
+	<script src="../../public/js/logout.js"></script> --}}
+</body>
+</html>

@@ -5,21 +5,21 @@ const bcrypt = require('bcrypt')
 
 class User extends Model{
 	// grab blog method
-	async getBlogs(){
-		try {
-			console.log(this.getBlogs())
-		} catch (error) {
-			console.log(`Something went wrong with getting blogs by user`,error)
-		}
-	}
-	// grab comment method?
-	async getComments(){
-		try {
-			console.log(this.getComments())
-		} catch (error) {
-			console.log(`Something went wrong with getting comments by user`,error)
-		}
-	}
+	// async getBlogs(){
+	// 	try {
+	// 		console.log(this.getBlogs())
+	// 	} catch (error) {
+	// 		console.log(`Something went wrong with getting blogs by user`,error)
+	// 	}
+	// }
+	// // grab comment method?
+	// async getComments(){
+	// 	try {
+	// 		console.log(this.getComments())
+	// 	} catch (error) {
+	// 		console.log(`Something went wrong with getting comments by user`,error)
+	// 	}
+	// }
 }
 // check password method
 
@@ -62,19 +62,19 @@ User.init({
 		}
 	}
 },
-{
-	hooks:{
-		beforeCreate: (user =>{
-				user.password = bcrypt.hash(user.password, 10)
-				return user
-		}),
-		beforeUpdate: aync (user =>{
-			user.password = bcrypt.hash(user.password, 10)
-			return user
-		}),
+// {
+// 	hooks:{
+// 		beforeCreate: (user =>{
+// 				user.password = bcrypt.hash(user.password, 10)
+// 				return user
+// 		}),
+// 		beforeUpdate: (user =>{
+// 			user.password = bcrypt.hash(user.password, 10)
+// 			return user
+// 		}),
 
-	},
-},
+// 	},
+// },
 {
 	sequelize,
 	freezeTableName: true,

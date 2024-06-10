@@ -6,10 +6,10 @@ const { now } = require("sequelize/lib/utils")
 //  !THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
 // // create Blog model
 	//*homepageRoute
-	app.get('/', (req, res) =>{
-		Blog.findAll({raw:true})
-		.then((blogs) => res.render('blogs', ({blogs})))
-	})
+	// app.get('/', (req, res) =>{
+	// 	Blog.findAll({raw:true})
+	// 	.then((blogs) => res.render('blogs', ({blogs})))
+	// })
 // todo main.handlebars & blog.handlebars
 
 //!  navigation links for the homepage and the dashboard and the option to log in
