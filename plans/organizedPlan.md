@@ -21,8 +21,7 @@
 
 ## Routes and Controllers
 ### General Routes
-- **Homepage (`'/'`)**: Display all blogs.
-  <!-- !route returning data, not showing through handlebars -->
+<!-- - **Homepage (`'/'`)**: Display all blogs. -->
 - **Signup (`'/signup'`)**: Show signup form
 - **Login (`'/login'`)**: Show login form.
 - **Individual Blog (`'/blogs/:id'`)**: Display a single blog with comments.

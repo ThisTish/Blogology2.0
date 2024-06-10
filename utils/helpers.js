@@ -1,8 +1,10 @@
-module.exports = {
-	logger:() =>{
-		console.log('log')
-	}
+const express = require('express');
+const app = express();
+
+// Logging middleware
+const reqLog = (req, res, next) => {
+console.log(`${new Date().toISOString()} - ${req.method} ${req.url} w/ ${Object.keys(req.body)}`.magenta);
+next();
 }
-// a place for little functions used a lot.
-// login
-// logout
+
+module.exports = reqLog

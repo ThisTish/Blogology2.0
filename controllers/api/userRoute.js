@@ -1,67 +1,11 @@
-// todo placeholder for now
-
-const express = require('express')
-const User = require('../../models/User')
-
-const router = express.Router()
-
-// GET /api/users
-async function getUsers(req, res) {
-	try {
-		const users = await User.findAll()
-		res.json(users)
-	} catch (err) {
-		console.log(err)
-		res.status(500).json({ message: 'Server Error' })
-	}
-}
-// route to run getUsers
-router.get('/', getUsers)
+const router = require('express').Router()
+const {User} = require('../../models')
 
 
-
-
-// login
-router.post('/', async (req, res) => {
-	try {
-		const {username, password} = req.body
-		if(!username || !password){
-			return res.status(400).json({message: 'Please enter a username and password'})
-		}
-		const userData= await User.findOne({where: {
-			username: username
-		}})
-		console.log(`userData: ${Object.keys(userData)}`.yellow)
-		// todo serialize
-		if(!userData){
-			return res.status(400).json({message: 'User not found'})
-	
-		}
-		const validPassword = await userData.checkPassword(password)
-		if(!validPassword){
-			return res.status(400).json({message: 'Invalid password'})
-		}
-		loginSess(req, res)
-
-	} catch (error) {
-		console.log('Trouble Logging In:', error)
-	}
+router.post('/signup', async (req, res) => {
+	await signup(req, res)
 })
 
-async function loginSess(req, res) {
-	try {
-		req.session.save(() => {
-			req.session.user_id = userData.id
-			req.session.username = userDate.username
-			req.session.loggedIn = true
-			res.json({ user: userDate, message: "You are now logged in".cyan })
-		})
-	} catch (error) {
-		console.log(`Trouble logging in: ${error}`.red)
-	}
-}
-
-// signup
 async function signup(req, res){
 	try {
 		// res.send(req.body)
@@ -78,16 +22,77 @@ async function signup(req, res){
 		const user = {
 			username,
 			password
-			}
-			const userData = await User.create(user)
-			res.json(userData)
-			// todo create session->redirect to dashboard
-			loginSess(req, res)
+		}
+		
+		const userData = await User.create(user)
+			// res.json(userData)
+			await loginSess(req, res, userData)
 			// const users = getUsers()
 			
-			} catch (error) {
-				console.log(`Trouble signing up: ${error}`.red)
+	} catch (error) {
+		res.status(500).json({message: 'Server Trouble signing up', error})	
+}
+}
+
+// login
+router.post('/login', async (req, res) => {
+	try {
+		const {username, password} = req.body
+		if(!username || !password){
+			return res.status(400).json({message: 'Please enter a username and password'})
+		}
+		const userData= await User.findOne({where: {
+			username: username
+		}})
+		console.log(`userData: ${userData}`.green)
+		
+		if(!userData){
+			return res.status(400).json({message: 'User not found'})
+	
+		}
+		// const validPassword = await userData.checkPassword(password)
+		// console.log(`validPassword: ${validPassword}`.green)
+		// if(!validPassword){
+		// 	return res.status(400).json({message: 'Invalid password'})
+		// }
+		loginSess(req, res, userData)
+
+	} catch (error) {
+		res.status(500).json({message: 'Trouble logging in', error})	
+	}
+})
+
+async function loginSess(req, res, userData) {
+	try {
+		req.session.save(() => {
+			req.session.user_id = parseInt(userData.user_id)
+			console.log(`user id: ${parseInt(userData.user_id)}`.yellow)
+			req.session.username = userData.username
+			console.log(`username: ${userData.username}`.yellow)
+			req.session.logged_in = true
+			res.status(200).json({ user: userData, message: "You are now logged in".cyan })
+		})
+	} catch (error) {
+		res.status(400).json({ message: 'Trouble logging in', error })
 	}
 }
 
-module.exports = getUsers
+
+// route to run getUsers to check user data
+router.get('/', async (req, res) => {
+	await getUsers(req, res)
+
+})
+async function getUsers(req, res) {
+	try {
+		const users = await User.findAll()
+		res.json(users)
+	} catch (error) {
+		console.log(`Trouble getting users: ${error}`.red)
+		res.status(500).json({ message: 'Server Error', error })
+	}
+}
+
+
+module.exports = router
+

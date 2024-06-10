@@ -2,18 +2,17 @@ const { raw } = require("express")
 const { where } = require("sequelize")
 const { now } = require("sequelize/lib/utils")
 
-// !WHEN I visit the site for the first time
-//  !THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
+//// WHEN I visit the site for the first time
+//// THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
 // // create Blog model
-	//*homepageRoute
+	// omepageRoute
 	// app.get('/', (req, res) =>{
 	// 	Blog.findAll({raw:true})
 	// 	.then((blogs) => res.render('blogs', ({blogs})))
 	// })
-// todo main.handlebars & blog.handlebars
+//  main.handlebars & blog.handlebars
 
-//!  navigation links for the homepage and the dashboard and the option to log in
-	// *make a nav partial?
+////  navigation links for the homepage and the dashboard and the option to log in
 	// <header>
 		// <h1>BLOGOLOGY</h1>
 		// <nav>
@@ -43,7 +42,7 @@ const { now } = require("sequelize/lib/utils")
 			// </ul>
 		// </nav>
 	// </header>
-	// *add links to endpoints
+	// //add links to endpoints
 
 //// WHEN I click on the homepage option
 //// THEN I am taken to the homepage

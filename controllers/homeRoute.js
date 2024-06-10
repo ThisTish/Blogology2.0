@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {User, Blog, Comment} = require('../models')
 const { Sequelize } = require('sequelize')
+const isAuthenticated = require('../utils/authorize')
 
 // get & display all blogs
 router.get('/', async (req, res) => {
@@ -54,7 +55,34 @@ router.get('/blog/:id', async (req, res) => {
 	}
 })
 
-// todo check if authorized/loggedin
+// check if authorized/loggedin before going to user dashboard
+router.get('/dashboard', isAuthenticated, async (req, res) => {
+	try {
+		const userData = await User.findByPk(req.session.user_id,{
+			attributes: {
+				exclude: [
+					'password'
+				]
+			},
+			include: [
+				{
+					model: Blog
+				}, 
+				{
+					model: Comment
+				}
+			]
+		})
 
+		const user = userData.get({plain: true})
+
+		res.render('dashboard', {
+			...user,
+			logged_in: true
+		})
+	} catch (error) {
+		res.status(500).json({msg:`Trouble loading dashboard:`, error})
+	}
+})
 
 module.exports = router

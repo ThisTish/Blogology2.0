@@ -5,9 +5,9 @@ const path = require('path')
 
 const sequelize = require('./config/connection')
 const sequelizeStore = require('connect-session-sequelize')(session.Store)
-const helpers = require('./utils/helpers')
 const colors = require('colors')
 const routes = require('./controllers')
+const reqLog = require('./utils/helpers')
 // const { Store } = require('express-session')
 
 
@@ -27,31 +27,32 @@ connectToDB()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-// const sess = {
-// 	secret:"Sshhhhh, it's a secret!",
-// 	cookie:{
-// 		maxAge: 300000,
-// 		httpOnly: true,
-// 		secure: false,
-// 		sameSite: "strict"
-// 	},
-// 	resave: false,
-// 	saveUninitialized: true,
-// 	store: new sequelizeStore({
-// 		db: sequelize
-// 	})
-// }
+const sess = {
+	secret:"Sshhhhh, it's a secret!",
+	cookie:{
+		maxAge: 300000,
+		httpOnly: true,
+		secure: false,
+		sameSite: "strict"
+	},
+	resave: false,
+	saveUninitialized: true,
+	store: new sequelizeStore({
+		db: sequelize
+	})
+}
 
-// app.use(session(sess))
+app.use(session(sess))
 
-const hbs = exphbs.create({helpers})
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+// const hbs = exphbs.create({helpers
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(reqLog)
 app.use(routes)
 
 app.get('/sessions', async (req, res) => {
