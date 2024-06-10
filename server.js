@@ -27,22 +27,22 @@ connectToDB()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-const sess = {
-	secret:"Sshhhhh, it's a secret!",
-	cookie:{
-		maxAge: 300000,
-		httpOnly: true,
-		secure: false,
-		sameSite: "strict"
-	},
-	resave: false,
-	saveUninitialized: true,
-	store: new sequelizeStore({
-		db: sequelize
-	})
-}
+// const sess = {
+// 	secret:"Sshhhhh, it's a secret!",
+// 	cookie:{
+// 		maxAge: 300000,
+// 		httpOnly: true,
+// 		secure: false,
+// 		sameSite: "strict"
+// 	},
+// 	resave: false,
+// 	saveUninitialized: true,
+// 	store: new sequelizeStore({
+// 		db: sequelize
+// 	})
+// }
 
-app.use(session(sess))
+// app.use(session(sess))
 
 const hbs = exphbs.create({helpers})
 app.engine('handlebars', hbs.engine);
