@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Blog, Comment} = require('../../models')
+const {Blog, Comment, User} = require('../../models')
 const { Sequelize } = require('sequelize');
 const isAuthenticated = require('../../utils/authorize');
 const { use } = require('./userRoute');
@@ -12,12 +12,19 @@ router.get('/:id', async (req, res) => {
 			where: { blog_id: id },
 			include: [
 				{
+					model: User,
+					attributes: ['username'],
+					as: 'blogUser'
+				}
+			],
+			include: [
+				{
 				model: Comment,
-				attributes: ['comment', 'user_id'],
-				// include:[{
-				// 	model: User,
-				// 	attributes: ['username']
-				// 	}]
+				attributes: ['comment', 'user_id', 'createdAt'],
+				include:[{
+					model: User,
+					attributes: ['username']
+					}]
 				}
 			]})
 		if(!blog) {

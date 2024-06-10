@@ -21,31 +21,13 @@ Blog.init(
 			type: DataTypes.TEXT,
 			allowNull: false
 		},
-		// created_on:{
-		// 	type: DataTypes.DATEONLY,
-		// 	allowNull: false,
-		// 	references: {
-		// 		model: 'blog',
-		// 		key: 'createdAt'
-		// 	}
-		// },
-		// created_by: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: false,
-		// 	references:{
-		// 		model: 'User',
-		// 		key:'user_id'
-		// 	}
-		// // 	},
-		// comment_id:{
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: true,
-		// 	references:{
-		// 		model: 'comment',
-		// 		key: 'comment_id'
-		// 	}
-		// }
-		
+		user_id:{
+			type: DataTypes.INTEGER,
+			refrences:{
+				model: 'user',
+				key: 'user_id'
+			}
+		}
 	},
 	{
 	sequelize,

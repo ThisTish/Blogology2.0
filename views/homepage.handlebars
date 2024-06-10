@@ -5,6 +5,13 @@
 			{{!-- todo format_date --}}
 			<p>Created: {{blog.createdAt}}</p>
 			{{!-- todo get user to connect to blog --}}
-			<p>Created By: {{blog.user}}</p>
+			<p>Created By: {{blog.user.username}}</p>
+			{{#if blog.comments}}
+				{{#each blog.comments as |comment|}}
+					<p>{{comment.comment}}</p>
+					<p>Created: {{comment.createdAt}}</p>
+					<p>Created By: {{comment.user.username}}</p>
+				{{/each}}
+			{{/if}}
 	{{/each}}
 </ul>

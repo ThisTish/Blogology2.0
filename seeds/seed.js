@@ -8,7 +8,7 @@ const blogData =require('./blogData.json')
 
 const seedData = async()=>{
 try {
-	await sequelize.sync({force: false})
+	await sequelize.sync({force: true})
 	
 	const users = await User.bulkCreate(userData, {
 		individualHooks: true,
@@ -17,17 +17,18 @@ try {
 	
 	const blogs = await Blog.bulkCreate(blogData)
 		console.log('Database seeded'.yellow)
+		returning: true
 	// const data = [users, comments, blogs]
 	// 	console.log(data)
-	} catch (error) {
-		console.log('error! error! error'.red, error)
-	}
-	
+
 	const comments = await Comment.bulkCreate(commentData, {
-		returning: true
+	returning: true
 	})
 
-	sequelize.close()
+} catch (error) {
+	console.log('error! error! error'.red, error)
+}
+	// sequelize.close()
 }
 
 seedData()

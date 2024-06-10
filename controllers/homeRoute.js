@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
 	try {
 		const blogData = await Blog.findAll({
 			include:[
+				
 				{
 					model: User,
 					attributes: ['username']
@@ -15,10 +16,18 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: Comment,
-					attributes: ['comment']
+					attributes: ['comment', 'user_id', 'createdAt'],
+					include: [
+						{
+							model: User,
+							attributes: ['username']
+						}
+					]
 					// *todo comment showing empty but comment_id is there if there is one.
 				}
 			]
+
+			
 		})
 		if(!blogData){
 			return res.status(404).json({message: 'No blogs found'})

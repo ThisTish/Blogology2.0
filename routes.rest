@@ -1,7 +1,7 @@
 GET http://localhost:3000
 
 ###
-GET http://localhost:3000/api/blog/4
+GET http://localhost:3000/api/blog/1
 
 ###
 POST  http://localhost:3000/api/blog
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
 	"title": "My blog post",
-	"text": "This is my second blog post"
+	"text": "Shoot is my second blog post",
 }
 
 ###
@@ -56,7 +56,7 @@ GET http://localhost:3000/api/users
 GET http://localhost:3000/api/comments
 
 ###
-POST  http://localhost:3000/api/blog/4/comment
+POST  http://localhost:3000/api/blog/1/comment
 Content-Type: application/json
 
 {
@@ -66,9 +66,9 @@ Content-Type: application/json
 ###
 PUT http://localhost:3000/api/comments/1
 Content-Type: application/json
-
+# doesn't work yet
 {
-	"blog_id": 1
+	"user_id": 6
 }
 
 ###
