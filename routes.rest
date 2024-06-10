@@ -6,6 +6,16 @@ GET http://localhost:3000/api/blog/1
 
 ###
 
+POST  http://localhost:3000/api/blog
+Content-Type: application/json
+
+{
+	"title": "Always Learning",
+	"text": "this is how we do. we learn and we go to school"
+}
+
+###
+
 DELETE  http://localhost:3000/api/blog/3
 
 ###
