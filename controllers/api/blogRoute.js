@@ -29,7 +29,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 		const newBlog = await Blog.create({
 			title,
 			text,
-			created_by: req.session.user_id
+			user_id: req.session.user_id
 		})
 		res.status(202).json(newBlog)
 		// todo make dashboard
@@ -42,7 +42,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 		}
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',isAuthenticated, async (req, res) => {
 	try {
 		const id = req.params.id;
 		const blog = await Blog.destroy({where: { blog_id: id }})
@@ -56,6 +56,22 @@ router.delete('/:id', async (req, res) => {
 	}
 })
 
+router.put('/:id', isAuthenticated, async (req, res) => {
+	try {
+		let { title, text } = req.body
+		const id = req.params.id
+		const blog = await Blog.findOne({where: { blog_id: id }})
+		if(!blog) {
+			return res.status(404).json({ message: 'No blogs found' })
+		}
+		const newBlog = await Blog.update({ title, text }, { where: { blog_id: id }})
+		res.status(202).json(newBlog)
+		// res.redirect('/dashboard')
+
+	} catch (error) {
+		res.status(500).json({ message: 'Server Error updating post', error })
+	}
+})
 
 // todo display associated comments
 

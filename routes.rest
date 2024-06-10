@@ -10,8 +10,17 @@ POST  http://localhost:3000/api/blog
 Content-Type: application/json
 
 {
-	"title": "Always Learning",
-	"text": "this is how we do. we learn and we go to school"
+	"title": "yeasayer",
+	"text": "this is longevity at it's finest"
+}
+
+###
+PUT http://localhost:3000/api/blog/1
+Content-Type: application/json
+
+{
+	"title": "My blog post",
+	"text": "This is my second blog post"
 }
 
 ###
@@ -49,15 +58,6 @@ GET http://localhost:3000/api/users
 
 ###
 
-PUT http://localhost:3000/updateBlog/1
-Content-Type: application/json
-
-{
-	"title": "My blog post",
-	"content": "This is my second blog post"
-}
-
-###
 
 DELETE http://localhost:3000/deleteBlog/1
 

@@ -35,9 +35,9 @@
 <!-- - **Logout (`GET /logout`)**: Handle user logout. -->
 
 ### Blog Routes
-- **Create Blog (`POST /newBlog`)**: Handle creating a new blog post.
+<!-- - **Create Blog (`POST /newBlog`)**: Handle creating a new blog post. -->
 - **Update Blog (`PUT /blogs/:id`)**: Handle updating an existing blog post.
-- **Delete Blog (`DELETE /blogs/:id`)**: Handle deleting a blog post.
+<!-- - **Delete Blog (`DELETE /blogs/:id`)**: Handle deleting a blog post. -->
 - **Create Comment (`POST /blogs/:id/comment`)**: Handle creating a new comment on a blog post.
 
 ## Handlebars Templates
