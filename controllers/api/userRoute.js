@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../../models')
 
-
+// signup
 router.post('/signup', async (req, res) => {
 	await signup(req, res)
 })
@@ -35,33 +35,38 @@ async function signup(req, res){
 
 // login
 router.post('/login', async (req, res) => {
+	await login(req, res)
+})
+
+async function login(req, res) {
 	try {
 		const {username, password} = req.body
+		
 		if(!username || !password){
 			return res.status(400).json({message: 'Please enter a username and password'})
 		}
+		
 		const userData= await User.findOne({where: {
 			username: username
 		}})
-		console.log(`userData: ${Object.keys(userData)}`.green)
 		
 		if(!userData){
 			return res.status(400).json({message: 'User not found'})
-	
 		}
+
 		const validPassword = userData.checkPassword(password)
-		console.log(`validPassword: ${validPassword}`.green)
 		
 		if(!validPassword){
 			return res.status(400).json({message: 'Invalid password'})
 		}
+
 		loginSess(req, res, userData)
 
 	} catch (error) {
 		res.status(500).json({message: 'Trouble logging in', error})	
 	}
-})
-
+}
+// login session
 async function loginSess(req, res, userData) {
 	try {
 		req.session.save(() => {
@@ -77,6 +82,21 @@ async function loginSess(req, res, userData) {
 	}
 }
 
+// logout
+router.post('/logout', async (req, res) => {
+	await logout(req, res)
+})
+
+async function logout(req, res) {
+	const loggedIn = await req.session.logged_in
+	if(loggedIn){
+		req.session.destroy(() => {
+			res.status(204).end()
+		})
+	}else{
+		res.status(404).end()
+	}
+}
 
 // route to run getUsers to check user data
 router.get('/', async (req, res) => {
