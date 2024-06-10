@@ -8,16 +8,13 @@ const { use } = require('./userRoute');
 router.get('/:id', async (req, res) => {
 	try {
 		const id = req.params.id;
-		const blog = await Blog.findOne({
+		const blogData = await Blog.findOne({
 			where: { blog_id: id },
 			include: [
 				{
 					model: User,
-					attributes: ['username'],
-					as: 'blogUser'
-				}
-			],
-			include: [
+					attributes: ['username']
+				},
 				{
 				model: Comment,
 				attributes: ['comment', 'user_id', 'createdAt'],
@@ -27,10 +24,13 @@ router.get('/:id', async (req, res) => {
 					}]
 				}
 			]})
-		if(!blog) {
+		if(!blogData) {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
-		res.json(blog)
+		// res.json(blog)
+		const blog = blogData.get({plain: true})
+		res.render('blog', {
+			blog})
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error', error })
 	}

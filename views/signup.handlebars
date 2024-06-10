@@ -1,20 +1,26 @@
-<div class="center">
-	<button id="sign-up-btn">Sign up</button>
-</div>
-<div class="modal">
-	<div class="close-btn">&times;</div>
-	<form action="/signup">
+{{!-- <div class="modal"> --}}
+	{{!-- <div class="close-btn">&times;</div> --}}
+
+	<form class="form signup-form">
 		<h2>Sign up!</h2>
 		<div class="form-element">
 			<label for="username">Username</label>
-			<input type="submit" id="username" placeholder="username">
+			<input type="text" id="username" placeholder="username">
 		</div>
 		<div class="form-element">
 			<label for="password">Password</label>
-			<input type="submit" id="password" placeholder="********">
+			<input type="password" id="password1" placeholder="********">
 		</div>
-	<button id="sign-up-btn">Sign Up</button>
-	<button id="close-btn">Cancel</button>
+		<div class="form-element">
+			<label for="password">Password</label>
+			<input type="password" id="password2" placeholder="********">
+		</div>
+		<div>
+			<button id="sign-up-btn">Sign Up</button>
+			{{!-- <button id="close-btn">Cancel</button> --}}
+		</div>
 	</div>
-
 </div>
+
+
+<script src="./js/login.js"></script>

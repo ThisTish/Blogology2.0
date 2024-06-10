@@ -1,20 +1,18 @@
 <div class="blog card">
 	<h2>{{blog.title}}</h2>
-	<p>created on: {{blog.createdAt}} by </p>
-	<p>{{blog.text}}</p>
-	{{!-- todo add format date & and add user--}}
+			<p>Created: {{blog.createdAt}}</p>
+			<p>{{blog.text}} </p>
+			{{!-- todo format_date --}}
+			<p>Created By: {{blog.user.username}}</p>
+
 	<button><a href="/comments">Comment on this</a></button>
 	{{#if blog.comments}}
-		<div class="comment-containter">
-		<h3>Comments</h3>
-		{{#each comments as |comment|}}
-			<div class="comment card">
-				<p>{{comment.text}}</p>
-				{{!-- todo add format date & and add user--}}
-				<p>created on: {{comment.createdAt}} by </p>
-			</div>
-		{{/each}}
-	{{/if}}
+				{{#each blog.comments as |comment|}}
+					<p>{{comment.comment}}</p>
+					<p>Created: {{comment.createdAt}}</p>
+					<p>Created By: {{comment.user.username}}</p>
+				{{/each}}
+			{{/if}}
 	{{#if user}}
 		{{#if user.isAdmin}}
 			<button class="delete">Delete</button>

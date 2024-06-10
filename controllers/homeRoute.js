@@ -46,23 +46,23 @@ router.get('/', async (req, res) => {
 })
 
 // get blog by id
-router.get('/blog/:id', async (req, res) => {
-	try {
-		console.log(`id: ${req.params.id}`.yellow)
-		const id = req.params.id;
-		const blogData = await Blog.findOne({where: { blog_id: id }})
-		if(!blogData) {
-			return res.status(404).json({ message: 'No blogs found' })
-		}
-		// res.json(blog)
-		const blog = blogData.get({plain: true})
-		res.render('blog', {
-			blog})
-	} catch (err) {
-		console.error(err)
-		res.status(500).json({ message: 'Server Error' })
-	}
-})
+// router.get('/blog/:id', async (req, res) => {
+// 	try {
+// 		console.log(`id: ${req.params.id}`.yellow)
+// 		const id = req.params.id;
+// 		const blogData = await Blog.findOne({where: { blog_id: id }})
+// 		if(!blogData) {
+// 			return res.status(404).json({ message: 'No blogs found' })
+// 		}
+// 		// res.json(blog)
+// 		const blog = blogData.get({plain: true})
+// 		res.render('blog', {
+// 			blog})
+// 	} catch (err) {
+// 		console.error(err)
+// 		res.status(500).json({ message: 'Server Error' })
+// 	}
+// })
 
 // check if authorized/loggedin before going to user dashboard
 router.get('/dashboard', isAuthenticated, async (req, res) => {
