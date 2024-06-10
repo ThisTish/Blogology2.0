@@ -20,7 +20,11 @@ class User extends Model{
 	// 		console.log(`Something went wrong with getting comments by user`,error)
 	// 	}
 	// }
+	checkPassword(loginPw) {
+		return bcrypt.compareSync(loginPw, this.password);
+	}
 }
+
 // check password method
 
 User.init({
@@ -62,20 +66,18 @@ User.init({
 		}
 	}
 },
-// {
-// 	hooks:{
-// 		beforeCreate: (user =>{
-// 				user.password = bcrypt.hash(user.password, 10)
-// 				return user
-// 		}),
-// 		beforeUpdate: (user =>{
-// 			user.password = bcrypt.hash(user.password, 10)
-// 			return user
-// 		}),
-
-// 	},
-// },
 {
+	hooks:{
+		beforeCreate: async (newUserData) =>{
+			newUserData.password = await bcrypt.hash(newUserData.password, 10)
+			return newUserData
+		},
+		beforeUpdate: async (updatedUser) =>{
+			updatedUser.password = await bcrypt.hash(updatedUser.password, 10)
+			return updatedUser
+		}
+
+	},
 	sequelize,
 	freezeTableName: true,
 	modelName: 'user',

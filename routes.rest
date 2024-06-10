@@ -10,8 +10,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-	"username": "apparat",
-	"password": "soapskin"
+	"username": "rainbow",
+    "password": "surprise"
 }
 
 ###
@@ -20,9 +20,9 @@ POST http://localhost:3000/api/users/signup
 Content-Type: application/json
 
 {
-	"username": "rose",
-	"password1": "kissfrom",
-	"password2": "kissfrom"
+	"username": "rainbow",
+	"password1": "surprise",
+	"password2": "surprise"
 }
 
 ###

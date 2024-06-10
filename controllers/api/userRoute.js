@@ -27,7 +27,6 @@ async function signup(req, res){
 		const userData = await User.create(user)
 			// res.json(userData)
 			await loginSess(req, res, userData)
-			// const users = getUsers()
 			
 	} catch (error) {
 		res.status(500).json({message: 'Server Trouble signing up', error})	
@@ -44,17 +43,18 @@ router.post('/login', async (req, res) => {
 		const userData= await User.findOne({where: {
 			username: username
 		}})
-		console.log(`userData: ${userData}`.green)
+		console.log(`userData: ${Object.keys(userData)}`.green)
 		
 		if(!userData){
 			return res.status(400).json({message: 'User not found'})
 	
 		}
-		// const validPassword = await userData.checkPassword(password)
-		// console.log(`validPassword: ${validPassword}`.green)
-		// if(!validPassword){
-		// 	return res.status(400).json({message: 'Invalid password'})
-		// }
+		const validPassword = userData.checkPassword(password)
+		console.log(`validPassword: ${validPassword}`.green)
+		
+		if(!validPassword){
+			return res.status(400).json({message: 'Invalid password'})
+		}
 		loginSess(req, res, userData)
 
 	} catch (error) {
