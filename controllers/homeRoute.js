@@ -68,7 +68,7 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
 
 		res.render('dashboard', {
 			...user,
-			logged_in: true
+			// logged_in: true
 		})
 	} catch (error) {
 		res.status(500).json({msg:`Trouble loading dashboard:`, error})
@@ -91,5 +91,6 @@ router.get('/login', (req, res) => {
 	}
 	res.render('login')
 })
+
 
 module.exports = router

@@ -1,0 +1,19 @@
+
+	<h1>Welcome to Your Dashboard</h1>
+	
+	<h2>Your Blogs</h2>
+	{{#if blogs.length}}
+		<ul>
+			{{#each blogs as |blog|}}
+				<li>{{this.title}}</li>
+				<button id="edit-blog-btn"><a href="/blog/{{this.blog_id}}">Edit</a></button>
+				<button id="delete-blog-btn"><a href="/blog/{{this.blog_id}}">Delete</a></button>
+			{{/each}}
+		</ul>
+	{{else}}
+		<p>No blogs found.</p>
+	{{/if}}
+	
+	<button>Create New Blog</button>
+</body>
+</html>

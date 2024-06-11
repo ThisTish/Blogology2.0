@@ -51,9 +51,10 @@ const { now } = require("sequelize/lib/utils")
 
 // !WHEN I choose to sign up 
 //! THEN I am prompted to create a username and password
-// todo make modal
-// todo finish creating signup.handlebars
-		// *basic form
+//  make modal
+// todo create signup submit function
+////finish creating signup.handlebars
+		//basic form
 		// <form action="/signup" method = POST>
 		// <label for="username">Username:</lablel>
 		// <input type="text" name="username" id="blah" class="blah" placeholder="?" maxlength="25" value="{{username}}">
@@ -80,9 +81,10 @@ const { now } = require("sequelize/lib/utils")
 
 //! WHEN I revisit the site at a later time and choose to sign in
 //! THEN I am prompted to enter my username and password
-// todo test by changing the time on the cookie
+// todo create login submit function
+// // test by changing the time on the cookie
 //  make sure there is a limit on session/cookie.
-// todo create login form - login.handlbars
+////  create login form - login.handlbars
 	// router.get('/login', (req, res) => res.render('login'))//in home-routes.js controller with if statements of if logged in, redirect('/dashboard' or '/')
 // // finish login logic for loginRoute
 	// router.post('/login', (req, res) =>{
@@ -102,8 +104,8 @@ const { now } = require("sequelize/lib/utils")
 //// THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
 //! WHEN I click on an existing blog post
 //! THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment  
-	// todo create blog.handlbar
-		// *partials
+	////  create blog.handlbar
+		// partials
 		// {{#if loggedIn}}
 		// <comment form goes here action="/blog" method = POST>
 		// {{else}}
@@ -121,17 +123,18 @@ const { now } = require("sequelize/lib/utils")
 
 //! WHEN I enter a comment and click on the submit button while signed in
 //! THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
-	//* post comment on postRoute 
-	router.post('/blogs/:id', (req, res) =>{
-		Comment.create({
-			text: req.body.text,
-			username: getUsername(session.user.name),//???
-			date: new Date(format_date(now))
-			// todo make format_date helper
-		})
-			.then((posts) =>res.render('blog', {posts}))
-			.catch(error => console.log(error))
-	})
+	// todo create comment form & handlebars
+	// todo create function to handle submit(add & post comment)
+// router.post('/blogs/:id', (req, res) =>{
+	// 	Comment.create({
+	// 		text: req.body.text,
+	// 		username: getUsername(session.user.name),//???
+	// 		date: new Date(format_date(now))
+	// 		// todo make format_date helper
+	// 	})
+	// 		.then((posts) =>res.render('blog', {posts}))
+	// 		.catch(error => console.log(error))
+	// })
 
 //! WHEN I click on the dashboard option in the navigation
 //! THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
@@ -160,6 +163,8 @@ const { now } = require("sequelize/lib/utils")
 // * render newblog.handlebars
 router.get('/newblog', (req, res) => res.render('newblog'))
 	// todo newblog.handlebars
+	// todo newBlog form & handlbars
+	// todo function for submit
 		//partially done
 		// <blog form>
 		// <input type="text" action="/newblog" method = "POST">
@@ -180,25 +185,25 @@ router.get('/newblog', (req, res) => res.render('newblog'))
 //// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 //! WHEN I click on one of my existing posts in the dashboard
 //! fills form with values from blog selected.
-// todo create editBlog.handlebars(partial?)
-router.get('/blogs/:id', (req, res)=>{
-	Blog.findByPk(req.params.id)
-	.then((blog)=> res.render('editBlog', {blog}))
-})
+// todo create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
+// router.get('/blogs/:id', (req, res)=>{
+// 	Blog.findByPk(req.params.id)
+// 	.then((blog)=> res.render('editBlog', {blog}))
+// })
 // THEN I am able to delete or update my post and taken back to an updated dashboard
-		router.put('/blogs/:id', (req, res) =>{
-			Blog.update(req.body)
-			.then((blogs)=> res.redirect('/dashboard'))
-			.catch((error) => console.log(error))
-		})
-	router.delete('blogs/:id', async (req, res) =>{
-		const blog = await Blog.findByPk(req.params.id)
-		// error check
-		await blog.destroy()
-		res.redirect('/dashboard')
-	})
+	// 	router.put('/blogs/:id', (req, res) =>{
+	// 		Blog.update(req.body)
+	// 		.then((blogs)=> res.redirect('/dashboard'))
+	// 		.catch((error) => console.log(error))
+	// 	})
+	// router.delete('blogs/:id', async (req, res) =>{
+	// 	const blog = await Blog.findByPk(req.params.id)
+	// 	// error check
+	// 	await blog.destroy()
+	// 	res.redirect('/dashboard')
+	// })
 	
-// todo study express sessions for this.....stuff..
+////  study express sessions for this.....stuff..
 // //WHEN I click on the logout option in the navigation
 // //THEN I am signed out of the site
 // WHEN I am idle on the site for more than a set time
@@ -235,19 +240,23 @@ router.get('/blogs/:id', (req, res)=>{
 	// comment-form -- used in blog
 
 	// *SUBLAYOUTS
-//   dashboard.handlebars//?how would you make another layout if you wanted another skeleton for this?
+//   todo dashboard.handlebars//?how would you make another layout if you wanted another skeleton for this?
 //   blogs.handlebars--for each blog of blogs >blog-details
 //   signup.handlebars-- >user-form (buttons based on endpoint?)
 //   login.handlebars--  >user-form (buttons based on endpoint?)
 //   blog.handlebars-- >blog-details(once) & >comment-details & >comment-form//?maybe make a button to add comment?
-//   newBlog.handlebars-- >blog-form(empty with create buttons)
-//   editBlog.handlebars-- >blog-form(filled with values and with edit/cancel/delete buttons)
+//   todo newBlog.handlebars-- >blog-form(empty with create buttons)
+//   todo editBlog.handlebars-- >blog-form(filled with values and with edit/cancel/delete buttons)
 	// *HELPERS
 
 
 // *js
-	// login
-	// logout
+	// todo submit login
+	// todo submit logout
+	// todo submit signup
+	// todo submit comment
+	// todo submit newBlog
+	// todo submit editBlog
 
 // 1. Get database & tables set up
 // 2. sync sequelize and server
