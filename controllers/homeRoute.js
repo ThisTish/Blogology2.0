@@ -75,13 +75,21 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
 	}
 })
 
-// populate signup page
+// render signup page
 router.get('/signup', (req, res) => {
 	if(req.session.loggedIn){
 		res.redirect('/')
 		return
 	}
 	res.render('signup')
+})
+// render login page
+router.get('/login', (req, res) => {
+	if(req.session.loggedIn){
+		res.redirect('/')
+		return
+	}
+	res.render('login')
 })
 
 module.exports = router
