@@ -8,3 +8,7 @@ next();
 }
 
 module.exports = reqLog
+
+const format_date = (date) => {
+    return date.toLocaleDateString()
+}

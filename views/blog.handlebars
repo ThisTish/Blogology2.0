@@ -1,23 +1,34 @@
 <div class="blog card">
-	<h2>{{blog.title}}</h2>
-			<p>Created: {{blog.createdAt}}</p>
-			<p>{{blog.text}} </p>
-			{{!-- todo format_date --}}
-			<p>Created By: {{blog.user.username}}</p>
+	<h2>{{title}}</h2>
+	<p>Created: <em> {{format_date createdAt}} </em></p>
+	{{!-- smaller and italicized --}}
+	<p>{{text}} </p>
+	<p>Created By:{{username}}</p>
+	<div class="accordion-container">
+		<h2>Comments</h2>
+		<div class="accordion-body">
 
-	<button><a href="/comments">Comment on this</a></button>
-	{{#if blog.comments}}
-				{{#each blog.comments as |comment|}}
-					<p>{{comment.comment}}</p>
-					<p>Created: {{comment.createdAt}}</p>
-					<p>Created By: {{comment.user.username}}</p>
+			{{#if comments}}
+				{{#each comments as |comment|}}
+					<div>
+					<p>{{comment}}</p>
+					<footer>Created: {{format_date createdAt}} Created By: {{user.username}}</footer>
+					</div>
 				{{/each}}
 			{{/if}}
-	{{#if user}}
-		{{#if user.isAdmin}}
-			<button class="delete">Delete</button>
-		{{/if}}
-		</div>
-	{{/if}}
+			{{#if logged_in}}
+				<button class="delete">Delete</button>
+			{{/if}}
+			{{/if}}
 
+			<div>
+			<form action="/{{id}}/comment">
+				<input type="text" name="comment" placeholder="leave your comment here">
+				<button data-set-id="{{id}}">Submit Comment</button>
+				<button>Clear</button>
+				{{!-- event listener to clear input --}}
+			</form>
+			</div>
+		</div>
+	</div>
 </div>

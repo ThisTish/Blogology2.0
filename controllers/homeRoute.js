@@ -34,12 +34,12 @@ router.get('/', async (req, res) => {
 		}
 
 		const blogs = blogData.map(blog => blog.get({plain: true}))
-		// res.json(blogs)		
-		res.render('homepage', {
-			blogs
-		// todo login functions not availabe yet.
-		// ,loggedIn: req.session.loggedIn
-		})
+		console.log(logged_in = req.session.logged_in)
+		res.json(blogs)		
+		// res.render('homepage', {
+		// 	blogs,
+		// 	logged_In: req.session.logged_in
+		// })
 	} catch (error) {
 		res.status(500).json({msg:`Trouble getting blogs:`, error})
 	}

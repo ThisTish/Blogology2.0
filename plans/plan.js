@@ -1,6 +1,9 @@
-const { raw } = require("express")
-const { where } = require("sequelize")
-const { now } = require("sequelize/lib/utils")
+// todo, jquery
+// todo tailwind
+// todo login sign up modal
+
+
+
 
 //// WHEN I visit the site for the first time
 //// THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
@@ -51,8 +54,8 @@ const { now } = require("sequelize/lib/utils")
 
 // !WHEN I choose to sign up 
 //! THEN I am prompted to create a username and password
-//  make modal
-// todo create signup submit function
+// TODO  make modal ? or new page?
+// // create signup submit function
 ////finish creating signup.handlebars
 		//basic form
 		// <form action="/signup" method = POST>
@@ -81,7 +84,7 @@ const { now } = require("sequelize/lib/utils")
 
 //! WHEN I revisit the site at a later time and choose to sign in
 //! THEN I am prompted to enter my username and password
-// todo create login submit function
+// // create login submit function
 // // test by changing the time on the cookie
 //  make sure there is a limit on session/cookie.
 ////  create login form - login.handlbars
@@ -124,7 +127,7 @@ const { now } = require("sequelize/lib/utils")
 //! WHEN I enter a comment and click on the submit button while signed in
 //! THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
 	// todo create comment form & handlebars
-	// todo create function to handle submit(add & post comment)
+	// // create function to handle submit(add & post comment)
 // router.post('/blogs/:id', (req, res) =>{
 	// 	Comment.create({
 	// 		text: req.body.text,
@@ -141,7 +144,7 @@ const { now } = require("sequelize/lib/utils")
 //  get dashboardRoute
 // router.get('/dashborad', (req, res) =>{
 // 	Blog.findAll({
-// 		where: {createdById : loggedInId}//? something like this.
+// 		where: {createdById : loggedInId}
 // 	})
 // 		.then((blogs) =>{
 // 			res.render('dashboard', {blogs})
@@ -160,11 +163,11 @@ const { now } = require("sequelize/lib/utils")
 
 //! WHEN I click on the button to add a new blog post
 //! THEN I am prompted to enter both a title and contents for my blog post
-// * render newblog.handlebars
-router.get('/newblog', (req, res) => res.render('newblog'))
+// todorender newblog.handlebars
+// router.get('/newblog', (req, res) => res.render('newblog'))
 	// todo newblog.handlebars
-	// todo newBlog form & handlbars
-	// todo function for submit
+	// todo newBlog form & handlebars
+	// // function for submit
 		//partially done
 		// <blog form>
 		// <input type="text" action="/newblog" method = "POST">
@@ -186,6 +189,7 @@ router.get('/newblog', (req, res) => res.render('newblog'))
 //! WHEN I click on one of my existing posts in the dashboard
 //! fills form with values from blog selected.
 // todo create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
+// todo edit blog route
 // router.get('/blogs/:id', (req, res)=>{
 // 	Blog.findByPk(req.params.id)
 // 	.then((blog)=> res.render('editBlog', {blog}))
@@ -218,6 +222,7 @@ router.get('/newblog', (req, res) => res.render('newblog'))
 // '/blogs'
 '/dashboard'
 '/newBlog'
+'/comment'
 
 
 // *MODELS TO MAKE
@@ -228,10 +233,10 @@ router.get('/newblog', (req, res) => res.render('newblog'))
 // User hasMany Comment
 // Blog hasMany Comment
 
-// todo research more to see what goes where.
-// *HANDLEBARS TO MAKE
+// // research more to see what goes where.
+// HANDLEBARS TO MAKE
 // main.handlebars
-	// *PARTIALS
+	// //PARTIALS
 	// comment-details.handlebars--goes in blog(& maybe edit blog)
 	// blog-form.handlebars -- used for new post & editing
 	// user-form.handlebars -- used for login / sign up

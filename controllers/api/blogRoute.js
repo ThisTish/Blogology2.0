@@ -27,17 +27,15 @@ router.get('/:id', async (req, res) => {
 		if(!blogData) {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
-		// res.json(blog)
 		const blog = blogData.get({plain: true})
-		res.render('blog', {
-			blog})
+		res.status(204).json(blog)
+		// res.render('blog', {blog})
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error', error })
 	}
 })
 
-// get blogs by logged in user
-// todo haven't tested or updated
+// get blogs by logged in user/dashboard
 router.get('/', isAuthenticated, async (req, res) => {
 	try {
 		const blogs = await Blog.findAll({where: { user_id: req.session.user_id }})
@@ -51,6 +49,7 @@ router.get('/', isAuthenticated, async (req, res) => {
 	}
 })
 
+// post a blog
 router.post('/', isAuthenticated, async (req, res) => {
 	try {
 		let { title, text} = req.body
@@ -89,6 +88,7 @@ router.delete('/:id',isAuthenticated, async (req, res) => {
 	}
 })
 
+// update a blog
 router.put('/:id', isAuthenticated, async (req, res) => {
 	try {
 		let { title, text } = req.body
@@ -110,16 +110,33 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 router.post('/:id/comment', isAuthenticated, async (req, res) => {
 	try {
 		const id = req.params.id
-		const blog = await Blog.findOne({where: { blog_id: id }})
+		const blog = await Blog.findOne({
+			where: { 
+				blog_id: id 
+			}
+		})
 		if(!blog) {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
+
+		if(!req.body.comment) {
+			return res.status(400).json({ message: 'Missing required fields' })
+		}
+
 		const comment = await Comment.create({
 			comment: req.body.comment,
 			user_id: req.session.user_id,
 			blog_id: parseInt(id)
 		})
-		res.status(202).json(comment)
+
+		const fullPost = await blog.addComment(comment)
+
+		const context = {
+			fullPost,
+			logged_in: req.session.logged_in
+		}
+		res.status(202).json(context)
+		
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ message: 'Server Error updating post', error })

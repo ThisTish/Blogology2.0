@@ -26,6 +26,12 @@ connectToDB()
 const app = express()
 const PORT = process.env.PORT || 3000
 
+const hbs = exphbs.create({
+	helpers, 
+	defaultLayout: 'main'
+});
+
+
 const sess = {
 	secret:"Sshhhhh, it's a secret!",
 	cookie:{
@@ -43,7 +49,7 @@ const sess = {
 
 app.use(session(sess))
 
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 
 app.use(express.json())

@@ -1,9 +1,16 @@
+
+# *BLOGS
+# Homepage
 GET http://localhost:3000
 
 ###
-GET http://localhost:3000/api/blog/1
+
+# Get 1 blog post
+GET http://localhost:3000/api/blog/3
 
 ###
+
+# Post a blog
 POST  http://localhost:3000/api/blog
 Content-Type: application/json
 
@@ -13,19 +20,25 @@ Content-Type: application/json
 }
 
 ###
+
+# Update a blog post
 PUT http://localhost:3000/api/blog/1
 Content-Type: application/json
 
 {
 	"title": "My blog post",
-	"text": "Shoot is my second blog post",
+	"text": "Shoot is my second blog post"
 }
 
 ###
+
+# Delete a blog post
 DELETE  http://localhost:3000/api/blog/3
 
 ###
 
+# *USERS
+# Login
 POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
@@ -35,6 +48,8 @@ Content-Type: application/json
 }
 
 ###
+
+# Sign up
 POST http://localhost:3000/api/users/signup
 Content-Type: application/json
 
@@ -45,35 +60,48 @@ Content-Type: application/json
 }
 
 ###
+
+# logout
 POST http://localhost:3000/api/users/logout
 
 ###
+
+# get all users
 GET http://localhost:3000/api/users
 
 ###
 
-###
-
+#  dashboard
 GET http://localhost:3000/dashboard
 
 ###
+
+# *COMMENTS
+# get all comments
+# todo broke something, worked on posting comment in blog & comments controllers
 GET http://localhost:3000/api/comments
 
 ###
+
+# post a comment
 POST  http://localhost:3000/api/blog/1/comment
 Content-Type: application/json
 
 {
-	"comment": "this is a comment"
+	"comment": "are there any questions"
 }
 
 ###
+
+# todo update a comment
 PUT http://localhost:3000/api/comments/1
 Content-Type: application/json
-# doesn't work yet
+
 {
 	"user_id": 6
 }
 
 ###
+
+# todo delete a comment
 DELETE http://localhost:3000/api/comments/1
