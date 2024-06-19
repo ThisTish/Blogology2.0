@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Comment = require('../../models')
 const Blog = require('../../models/Blog')
-
+const sequelize = require('sequelize')
 // get all comments
 router.get('/', async (req, res) => {
     try {
@@ -12,6 +12,8 @@ router.get('/', async (req, res) => {
         console.log(error)
         res.status(500).json({ message: 'Server Error', error })
     }
+
+    
 })
 
 // ?post comment is in blog api controller
@@ -43,6 +45,22 @@ router.put('/', async (req, res) => {
         console.log(error)
         res.status(500).json({ message: 'Server Error', error })
     }
+})
+
+// delete comment
+router.delete('/delete/:id', async (req, res) => {
+    const commentId = req.params.id
+
+    await Comment.destroy({
+        where:{
+            comment_id : commentId
+        }
+    })
+
+    res.status(200).json({message: 'Deleted Comment Succesfully'})
+
+    // ?dunno if this is right
+    // res.redirect('/blog/:id')
 })
 
 module.exports = router

@@ -1,18 +1,18 @@
 <ul>
 	{{#each blogs as |blog|}}
-		<li><a href="/api/blog/{{blog.blog_id}}">{{blog.title}}</a></li>
-			<p>{{blog.text}} </p>
-			{{!-- todo format_date --}}
-			<p>Created: {{format_date blog.createdAt}}</p>
-			{{!-- todo get user to connect to blog --}}
-			<p>Created By: {{blog.user.username}}</p>
+		<li><a href="/blog/{{blog_id}}">{{title}}</a></li>
+			<p>{{text}} </p>
+			<p>Created: {{format_date createdAt}}</p>
+			<p>Created By: {{user.username}}</p>
 			<div>
-				<h3>Comments:</h3>
+				<h4>Comments:</h4>
 				<ul>
 					{{#each comments as |comment|}}
-					<li>{{text}}</li>
+					<li>{{comment.comment}}
+						<p>Created on <em>{{format_date comment.createdAt}}</em> by <em>{{comment.user.username}}</em></p>
+					</li>
+					{{/each}}
 				</ul>
 			</div>
 	{{/each}}
 </ul>
-{{!-- ? do i need blog all over? --}}

@@ -2,17 +2,17 @@
 		[
 			{
 			"comment": "Exciting times ahead for healthcare! AI's ability to analyze vast amounts of patient data can lead to more accurate diagnoses and personalized treatment plans. Can't wait to see what innovations come next.",
-			"user_id": 1,
+			"user_id": 3,
 			"blog_id":1
 			},
 			{
 			"comment": "5G is a game-changer for connectivity. The high speeds and low latency open up endless possibilities for IoT devices and real-time applications. It's not just about faster downloads; it's about building a smarter, more connected world.",
-			"user_id": 2,
+			"user_id": 4,
 			"blog_id": 2
 			},
 			{
 			"comment": "Blockchain's potential goes far beyond cryptocurrencies. Its tamper-proof and decentralized nature make it ideal for applications like supply chain tracking and secure voting systems. Exciting to see it gaining traction in various industries.",
-			"user_id": 3,
+			"user_id": 5,
 			"blog_id": 3
 			}
 		]

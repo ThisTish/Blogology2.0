@@ -16,8 +16,8 @@
 					</div>
 				{{/each}}
 			{{/if}}
-			{{#if logged_in}}
-				<button class="delete">Delete</button>
+			{{#if owner}}
+				<button class="delete"><a href="/comment/{{id}}/delete"> Delete </a></button>
 			{{/if}}
 			{{/if}}
 

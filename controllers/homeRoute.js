@@ -2,6 +2,8 @@ const router = require('express').Router()
 const {User, Blog, Comment} = require('../models')
 const { Sequelize } = require('sequelize')
 const isAuthenticated = require('../utils/authorize')
+const colors = require('colors')
+const session = require('express-session')
 
 // get & display all blogs
 router.get('/', async (req, res) => {
@@ -12,7 +14,6 @@ router.get('/', async (req, res) => {
 				{
 					model: User,
 					attributes: ['username']
-					// *todo username(user)& user_id showing null
 				},
 				{
 					model: Comment,
@@ -23,23 +24,22 @@ router.get('/', async (req, res) => {
 							attributes: ['username']
 						}
 					]
-					// *todo comment showing empty but comment_id is there if there is one.
 				}
 			]
-
 			
 		})
 		if(!blogData){
-			return res.status(404).json({message: 'No blogs found'})
+			return 'No blogs found!'
 		}
 
 		const blogs = blogData.map(blog => blog.get({plain: true}))
-		console.log(logged_in = req.session.logged_in)
-		res.json(blogs)		
-		// res.render('homepage', {
-		// 	blogs,
-		// 	logged_In: req.session.logged_in
-		// })
+		console.log(`logged in: ${req.session.logged_in}`.yellow)
+		// !undefined
+		// res.json(blogs)		
+		res.render('homepage', {
+			blogs,
+			logged_In: req.session.logged_in
+		})
 	} catch (error) {
 		res.status(500).json({msg:`Trouble getting blogs:`, error})
 	}
