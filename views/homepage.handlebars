@@ -1,6 +1,6 @@
 <ul>
 	{{#each blogs as |blog|}}
-		<li><a href="/blog/{{blog_id}}">{{title}}</a></li>
+		<li><a href="api/blogs/{{blog_id}}">{{title}}</a></li>
 			<p>{{text}} </p>
 			<p>Created: {{format_date createdAt}}</p>
 			<p>Created By: {{user.username}}</p>

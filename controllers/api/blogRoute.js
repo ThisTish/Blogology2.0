@@ -28,8 +28,10 @@ router.get('/:id', async (req, res) => {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
 		const blog = blogData.get({plain: true})
-		res.status(204).json(blog)
-		// res.render('blog', {blog})
+		console.log(blog)
+
+		// res.status(204).json(blog)
+		res.render('blog', {blog})
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error', error })
 	}
@@ -107,7 +109,8 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 })
 
 // add comment
-router.post('/:id/comment', isAuthenticated, async (req, res) => {
+router.post('/:id/comment',  async (req, res) => {
+// isAuthenticated,
 	try {
 		const id = req.params.id
 		const blog = await Blog.findOne({

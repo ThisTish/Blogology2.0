@@ -1,29 +1,31 @@
 <div class="blog card">
-	<h2>{{title}}</h2>
-	<p>Created: <em> {{format_date createdAt}} </em></p>
+	<h2>{{blog.title}}</h2>
+	<p>Created: <em> {{format_date blog.createdAt}} </em></p>
 	{{!-- smaller and italicized --}}
-	<p>{{text}} </p>
-	<p>Created By:{{username}}</p>
-	<div class="accordion-container">
-		<h2>Comments</h2>
-		<div class="accordion-body">
+	<p>{{blog.text}} </p>
+	<p>Created By:{{blog.user.username}}</p>
+	{{!-- <div class="accordion-container"> --}}
+		{{#if blog.comments.length}}
+			<h2>Comments</h2>
+			{{!-- <div class="accordion-body"> --}}
 
-			{{#if comments}}
-				{{#each comments as |comment|}}
+				{{#each blog.comments as |comment|}}
 					<div>
-					<p>{{comment}}</p>
+					<p>{{comment.comment}}</p>
 					<footer>Created: {{format_date createdAt}} Created By: {{user.username}}</footer>
 					</div>
+				{{!-- {{#if owner}} --}}
+				{{!-- todo create util for owner --}}
+					<button class="delete"><a href="/comment/{{id}}/delete"> Delete </a></button>
+				{{!-- {{/if}} --}}
 				{{/each}}
-			{{/if}}
-			{{#if owner}}
-				<button class="delete"><a href="/comment/{{id}}/delete"> Delete </a></button>
-			{{/if}}
 			{{/if}}
 
 			<div>
-			<form action="/{{id}}/comment">
-				<input type="text" name="comment" placeholder="leave your comment here">
+				{{!-- button to open form/input? --}}
+			<form action="api/blogs/{{id}}/comment">
+				<input type="text" name="comment" placeholder="leave your comment here" required>
+				{{!--  change prompt when empty --}}
 				<button data-set-id="{{id}}">Submit Comment</button>
 				<button>Clear</button>
 				{{!-- event listener to clear input --}}
