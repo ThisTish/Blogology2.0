@@ -146,6 +146,4 @@ router.post('/:id/comment',  async (req, res) => {
 	}
 })
 
-// todo display associated comments
-
 module.exports = router

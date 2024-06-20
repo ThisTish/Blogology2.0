@@ -23,10 +23,10 @@
 
 			<div>
 				{{!-- button to open form/input? --}}
-			<form action="api/blogs/{{id}}/comment">
+			<form action="/{{blog.id}}/comment">
 				<input type="text" name="comment" placeholder="leave your comment here" required>
 				{{!--  change prompt when empty --}}
-				<button data-set-id="{{id}}">Submit Comment</button>
+				<button>Submit Comment</button>
 				<button>Clear</button>
 				{{!-- event listener to clear input --}}
 			</form>

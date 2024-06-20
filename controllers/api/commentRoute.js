@@ -1,19 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const Comment = require('../../models')
+const Comment = require('../../models/Comment')
 const Blog = require('../../models/Blog')
 const sequelize = require('sequelize')
 // get all comments
 router.get('/', async (req, res) => {
     try {
         const comments = await Comment.findAll()
-        res.status(200).json(comments)
+
+        if(!comments || comments.length === 0){
+            res.status(404).json({message: 'No comments found'})
+        }
+
+        commentsPlain = comments.map(comment => comment.get({ plain: true }))
+
+            res.status(200).json(commentsPlain)
+                
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: 'Server Error', error })
     }
-
-    
 })
 
 // ?post comment is in blog api controller

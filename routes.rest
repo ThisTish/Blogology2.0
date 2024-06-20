@@ -78,13 +78,12 @@ GET http://localhost:3000/dashboard
 
 # *COMMENTS
 # get all comments
-# todo broke something, worked on posting comment in blog & comments controllers
 GET http://localhost:3000/api/comments
 
 ###
 
 # post a comment
-POST  http://localhost:3000/api/blog/1/comment
+POST  http://localhost:3000/api/blogs/1/comment
 Content-Type: application/json
 
 {

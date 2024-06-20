@@ -24,6 +24,11 @@ async function signup(req, res){
 			password
 		}
 		
+
+		// req.session.save(() => {
+		// 	req.session.user_id = userData.id;
+		// 	req.session.logged_in = true;
+		
 		const userData = await User.create(user)
 			// res.json(userData)
 			await loginSess(req, res, userData)
