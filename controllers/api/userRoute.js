@@ -100,8 +100,8 @@ router.post('/logout', async (req, res) => {
 async function logout(req, res) {
 	const loggedIn = await req.session.logged_in
 	if(loggedIn){
-		req.session.destroy(() => {
-			res.status(204).end()
+		await req.session.destroy(() => {
+			res.status(204).json({message:`logged out`}).end()
 		})
 	}else{
 		res.status(404).end()
@@ -109,6 +109,7 @@ async function logout(req, res) {
 }
 
 // route to run getUsers to check user data
+// !destroy before deploy
 router.get('/', async (req, res) => {
 	await getUsers(req, res)
 
