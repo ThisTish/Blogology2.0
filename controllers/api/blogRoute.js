@@ -154,7 +154,7 @@ router.post('/:id/comment',  async (req, res) => {
 		}
 		// res.status(202).json(context)
 
-		res.render(`/blog/${id}`)
+		res.redirect(`/api/blogs/${id}`)
 		
 	} catch (error) {
 		console.log(error)

@@ -2,7 +2,6 @@
 // todo tailwind
 // todo login sign up modal
 
-// todo mess with session so logged_in will go true
 
 // todo isAuthenticated is commented out everywhere. will place back in to places if needed. causing to many changes to session
 
@@ -11,6 +10,7 @@
 
 //! WHEN I visit the site for the first time
 //! THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
+// todo what to do if there aren't any. 
 // // create Blog model
 	// homepageRoute
 	// app.get('/', (req, res) =>{
@@ -53,8 +53,10 @@
 
 //! WHEN I click on the homepage option
 // !THEN I am taken to the homepage
-//// WHEN I click on any other links in the navigation
-//// THEN I am prompted to either sign up or sign in
+
+//!WHEN I click on any other links in the navigation
+//! THEN I am prompted to either sign up or sign in
+// todo isAuth added to routes to get dashboard & such
 
 // !WHEN I choose to sign up 
 //! THEN I am prompted to create a username and password
@@ -72,8 +74,8 @@
 		// <input type="text" name="password" id="blah" class="blah" placeholder="?" maxlength="25" value="{{password}}">
 		// <input type="submit" value="sign-up" class="btn">
 
-//// WHEN I click on the sign-up button
-////THEN my user credentials are saved and I am logged into the site
+//!WHEN I click on the sign-up button
+//!THEN my user credentials are saved and I am logged into the site
 	// // *signUpRoute-turn async?
 	// router.post('/', (req, res) =>{
 	// 	let {username, password} = req.body
@@ -106,12 +108,15 @@
 	// 	})
 	// })
 
-//// WHEN I am signed in to the site
-//// THEN I see navigation links for the homepage, the dashboard, and the option to log out
+//!WHEN I am signed in to the site
+//! THEN I see navigation links for the homepage, the dashboard, and the option to log out
+// todo {{#if logged_in}} on homepage
 //// WHEN I click on the homepage option in the navigation
 //// THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
-// WHEN I click on an existing blog post
-// THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment  
+//! WHEN I click on an existing blog post
+//! THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment  
+//? accordion?
+	// *goes to new page for now.
 	////  create blog.handlbar
 //		// partials
 //		// {{#if loggedIn}}

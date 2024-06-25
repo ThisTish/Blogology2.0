@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../../models')
 
-// todo dashboard not working, or login auth not working
+// todo dashboard not working
 
 
 // signup
