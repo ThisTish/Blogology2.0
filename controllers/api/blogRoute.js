@@ -1,11 +1,12 @@
 const router = require('express').Router()
 const {Blog, Comment, User} = require('../../models')
 const { Sequelize } = require('sequelize');
-const isAuthenticated = require('../../utils/authorize');
+// const isAuthenticated = require('../../utils/authorize');
 const { use } = require('./userRoute');
 
 // get blogs by logged in user/dashboard
-router.get('/dashboard', isAuthenticated, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
+	// isAuthenticated,
 	try {
 
 		const userId = req.session.user_id
@@ -61,7 +62,8 @@ router.get('/:id', async (req, res) => {
 })
 
 // post a blog
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', async (req, res) => {
+	// isAuthenticated,
 	try {
 		let { title, text} = req.body
 
@@ -86,7 +88,8 @@ router.post('/', isAuthenticated, async (req, res) => {
 })
 
 // Delete a blog
-router.delete('/:id',isAuthenticated, async (req, res) => {
+router.delete('/:id', async (req, res) => {
+	// isAuthenticated,
 	try {
 		const id = req.params.id;
 		const blog = await Blog.destroy({where: { blog_id: id }})
@@ -101,7 +104,8 @@ router.delete('/:id',isAuthenticated, async (req, res) => {
 })
 
 // update a blog
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', async (req, res) => {
+	// isAuthenticated,
 	try {
 		let { title, text } = req.body
 		const id = req.params.id

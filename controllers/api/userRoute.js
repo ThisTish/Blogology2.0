@@ -30,8 +30,7 @@ async function signup(req, res){
 		const userData = await User.create(user)
 		await loginSess(req, res, userData)
 		
-		//? render?
-		res.redirect('../../dashboard')
+// res.redirect is in loginSess()
 
 	} catch (error) {
 		res.status(500).json({message: 'Server Trouble signing up', error})	
@@ -66,11 +65,9 @@ async function login(req, res) {
 		}
 
 		await loginSess(req, res, userData)
-		
-		res.redirect('../../dashboard')
-		// res.status(200).json({message: `${username} logged in!`})
-
+// redirecting in loginSess
 	} catch (error) {
+		console.log(error.red)
 		res.status(500).json({message: 'Trouble logging in', error})	
 	}
 }
@@ -78,12 +75,13 @@ async function login(req, res) {
 async function loginSess(req, res, userData) {
 	try {
 		req.session.save(() => {
-			req.session.user_id = (userData.user_id)
+			req.session.user_id = userData.user_id
 			console.log(`loginSess ln 81: user id: ${(userData.user_id)}`.yellow)
 			req.session.username = userData.username
 			console.log(`loginSess ln 83: username: ${userData.username}`.yellow)
 			req.session.logged_in = true
 			console.log(` loginSess line 79${req.session.logged_in}`.cyan)
+			res.redirect('/')//until dashboard is done
 
 			// res.status(200).json({ user: userData, message: "You are now logged in".cyan })
 		})
@@ -95,18 +93,29 @@ async function loginSess(req, res, userData) {
 // logout
 router.post('/logout', async (req, res) => {
 	await logout(req, res)
+	console.log(`logout router ln 99 clicked`.red);
 })
-
+	
 async function logout(req, res) {
-	const loggedIn = await req.session.logged_in
-	if(loggedIn){
-		await req.session.destroy(() => {
-			res.status(204).json({message:`logged out`}).end()
-		})
-	}else{
-		res.status(404).end()
+	try {
+		const logged_in = await req.session.logged_in
+		if(logged_in){
+			await req.session.destroy(() => {
+				console.log(`logout route ln104: ${req.session.logged_in}`.red)
+				res.status(204).json({message:`logged out`}).end()
+			})
+	
+		}else{
+			res.status(404).end()
+		}
+	
+	} catch (error) {
+		console.log(error.red)
+		res.status(500).json({message: `error logging out`, error})
 	}
 }
+
+
 
 // route to run getUsers to check user data
 // !destroy before deploy

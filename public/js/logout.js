@@ -1,12 +1,12 @@
-const { application } = require("express")
+document.addEventListener('DOMContentLoaded', (event) =>{
+	document.querySelector('#logout').addEventListener('click', logoutFunction)
 
-document.getElementById('logout')
-	.addEventListener('click', logoutFunction)
+})
 
 const logoutFunction = async (event) =>{
 	event.preventDefault()
-
-	const response = await fetch('api/users/logout', {
+	console.log(`Logout public: ln 8  Click`)
+	const response = await fetch('/logout', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json'}
 	})

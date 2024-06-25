@@ -4,6 +4,8 @@
 
 // todo mess with session so logged_in will go true
 
+// todo isAuthenticated is commented out everywhere. will place back in to places if needed. causing to many changes to session
+
 
 
 

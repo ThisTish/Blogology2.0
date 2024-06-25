@@ -34,7 +34,7 @@ const hbs = exphbs.create({
 });
 
 
-const sess = {
+app.use(session({
 	secret:"Sshhhhh, it's a secret!",
 	cookie:{
 		maxAge: 300000,
@@ -43,13 +43,12 @@ const sess = {
 		sameSite: "strict"
 	},
 	resave: false,
-	saveUninitialized: true,
+	saveUninitialized: false,
 	store: new sequelizeStore({
 		db: sequelize
 	})
-}
+}))
 
-app.use(session(sess))
 
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')

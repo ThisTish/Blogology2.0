@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {User, Blog, Comment} = require('../models')
 const { Sequelize } = require('sequelize')
-const isAuthenticated = require('../utils/authorize')
+// const isAuthenticated = require('../utils/authorize')
 const colors = require('colors')
 const session = require('express-session')
 
@@ -33,9 +33,7 @@ router.get('/', async (req, res) => {
 		}
 
 		const blogs = blogData.map(blog => blog.get({plain: true}))
-		console.log(`logged in: ${req.session.logged_in}`.yellow)
-		// !undefined
-		// res.json(blogs)		
+		console.log(`Home Route ln 36: logged in: ${req.session.logged_in}`.yellow)
 		res.render('homepage', {
 			blogs,
 			logged_In: req.session.logged_in
@@ -46,7 +44,8 @@ router.get('/', async (req, res) => {
 })
 
 // check if authorized/loggedin before going to user dashboard
-router.get('/dashboard', isAuthenticated, async (req, res) => {
+router.get('/dashboard',  async (req, res) => {
+	// isAuthenticated,
 	try {
 		const userData = await User.findByPk(req.session.user_id,{
 			attributes: {
