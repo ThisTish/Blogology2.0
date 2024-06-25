@@ -4,6 +4,29 @@ const { Sequelize } = require('sequelize');
 const isAuthenticated = require('../../utils/authorize');
 const { use } = require('./userRoute');
 
+// get blogs by logged in user/dashboard
+router.get('/dashboard', isAuthenticated, async (req, res) => {
+	try {
+
+		const userId = req.session.user_id
+		const blogsData = await Blog.findAll({where: {
+			user_id: userId
+			}
+		})
+		if(!blogsData || blogsData.length === 0) {
+			return res.status(404).json({ message: 'No blogs found' })
+		}
+
+		const blogs = blogsData.map(blog => blog.get({ plain: true }))
+
+		res.json(blogs)
+		// res.render('dashboard', {blogs})
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ message: 'Server Error' })
+	}
+})
+
 // get blog by id
 router.get('/:id', async (req, res) => {
 	try {
@@ -37,20 +60,6 @@ router.get('/:id', async (req, res) => {
 	}
 })
 
-// get blogs by logged in user/dashboard
-router.get('/', isAuthenticated, async (req, res) => {
-	try {
-		const blogs = await Blog.findAll({where: { user_id: req.session.user_id }})
-		if(!blogs) {
-			return res.status(404).json({ message: 'No blogs found' })
-		}
-		res.json(blogs)
-		// res.render('dashboard', {blogs})
-	} catch (error) {
-		res.status(500).json({ message: 'Server Error', error })
-	}
-})
-
 // post a blog
 router.post('/', isAuthenticated, async (req, res) => {
 	try {
@@ -76,6 +85,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 		}
 })
 
+// Delete a blog
 router.delete('/:id',isAuthenticated, async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -107,7 +117,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 		res.status(500).json({ message: 'Server Error updating post', error })
 	}
 })
-
+// ? i'm here. gotta work on logging in
 // add comment
 router.post('/:id/comment',  async (req, res) => {
 // isAuthenticated,
@@ -138,7 +148,9 @@ router.post('/:id/comment',  async (req, res) => {
 			fullPost,
 			logged_in: req.session.logged_in
 		}
-		res.status(202).json(context)
+		// res.status(202).json(context)
+
+		res.render(`/blog/${id}`)
 		
 	} catch (error) {
 		console.log(error)

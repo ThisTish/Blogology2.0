@@ -7,8 +7,8 @@
 
 
 
-// WHEN I visit the site for the first time
-// THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
+//! WHEN I visit the site for the first time
+//! THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
 // // create Blog model
 	// homepageRoute
 	// app.get('/', (req, res) =>{
@@ -49,8 +49,8 @@
 //	// </header>
 	// //add links to endpoints
 
-// WHEN I click on the homepage option
-// THEN I am taken to the homepage
+//! WHEN I click on the homepage option
+// !THEN I am taken to the homepage
 //// WHEN I click on any other links in the navigation
 //// THEN I am prompted to either sign up or sign in
 
@@ -128,7 +128,6 @@
 	//// })
 
 
-	// ??? Where i'm at???
 //! WHEN I enter a comment and click on the submit button while signed in
 //! THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
 	// // create comment form & handlebars

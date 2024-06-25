@@ -1,17 +1,23 @@
 
 # *BLOGS
+
 # Homepage
 GET http://localhost:3000
 
 ###
 
+# get all blogs by user(dashboard)
+GET http://localhost:3000/api/blogs/dashboard
+
+###
+
 # Get 1 blog post
-GET http://localhost:3000/api/blog/3
+GET http://localhost:3000/api/blogs/6
 
 ###
 
 # Post a blog
-POST  http://localhost:3000/api/blog
+POST  http://localhost:3000/api/blogs
 Content-Type: application/json
 
 {
@@ -22,7 +28,7 @@ Content-Type: application/json
 ###
 
 # Update a blog post
-PUT http://localhost:3000/api/blog/1
+PUT http://localhost:3000/api/blogs/6
 Content-Type: application/json
 
 {
@@ -33,7 +39,7 @@ Content-Type: application/json
 ###
 
 # Delete a blog post
-DELETE  http://localhost:3000/api/blog/3
+DELETE  http://localhost:3000/api/blogs/3
 
 ###
 
@@ -82,12 +88,15 @@ GET http://localhost:3000/api/comments
 
 ###
 
+
+###
+
 # post a comment
 POST  http://localhost:3000/api/blogs/1/comment
 Content-Type: application/json
 
 {
-	"comment": "are there any questions"
+	"comment": "are there any doubts"
 }
 
 ###

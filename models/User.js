@@ -25,8 +25,6 @@ class User extends Model{
 	}
 }
 
-// check password method
-
 User.init({
 	user_id: {
 		type: DataTypes.INTEGER,

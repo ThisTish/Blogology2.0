@@ -1,6 +1,9 @@
 const router = require('express').Router()
 const {User} = require('../../models')
 
+// todo dashboard not working, or login auth not working
+
+
 // signup
 router.post('/signup', async (req, res) => {
 	await signup(req, res)
@@ -8,9 +11,9 @@ router.post('/signup', async (req, res) => {
 
 async function signup(req, res){
 	try {
-		// res.send(req.body)
 		let {username, password1, password2} = req.body
-		console.log(`username: ${username}, password1: ${password1}, password2: ${password2}`.yellow)
+		console.log(`Signup ln 12: username: ${username}, password1: ${password1}, password2: ${password2}`.yellow)
+		
 		if(!username || !password1 ||!password2){
 			return res.status(400).json({message: 'Please enter a username and password'})
 		}
@@ -23,19 +26,16 @@ async function signup(req, res){
 			username,
 			password
 		}
-		
-
-		// req.session.save(() => {
-		// 	req.session.user_id = userData.id;
-		// 	req.session.logged_in = true;
-		
+				
 		const userData = await User.create(user)
-			// res.json(userData)
-			await loginSess(req, res, userData)
-			
+		await loginSess(req, res, userData)
+		
+		//? render?
+		res.redirect('../../dashboard')
+
 	} catch (error) {
 		res.status(500).json({message: 'Server Trouble signing up', error})	
-}
+	}
 }
 
 // login
@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
 async function login(req, res) {
 	try {
 		const {username, password} = req.body
-		
+		console.log(`Login line 49 ${username} & ${password}`.blue)
 		if(!username || !password){
 			return res.status(400).json({message: 'Please enter a username and password'})
 		}
@@ -58,14 +58,17 @@ async function login(req, res) {
 		if(!userData){
 			return res.status(400).json({message: 'User not found'})
 		}
-
+		console.log(`Login ln 61 ${userData.password}`.blue)
 		const validPassword = userData.checkPassword(password)
-		
+		console.log(`Login Valid line 63 ${validPassword}`.blue)
 		if(!validPassword){
 			return res.status(400).json({message: 'Invalid password'})
 		}
 
-		loginSess(req, res, userData)
+		await loginSess(req, res, userData)
+		
+		res.redirect('../../dashboard')
+		// res.status(200).json({message: `${username} logged in!`})
 
 	} catch (error) {
 		res.status(500).json({message: 'Trouble logging in', error})	
@@ -75,12 +78,14 @@ async function login(req, res) {
 async function loginSess(req, res, userData) {
 	try {
 		req.session.save(() => {
-			req.session.user_id = parseInt(userData.user_id)
-			console.log(`user id: ${parseInt(userData.user_id)}`.yellow)
+			req.session.user_id = (userData.user_id)
+			console.log(`loginSess ln 81: user id: ${(userData.user_id)}`.yellow)
 			req.session.username = userData.username
-			console.log(`username: ${userData.username}`.yellow)
+			console.log(`loginSess ln 83: username: ${userData.username}`.yellow)
 			req.session.logged_in = true
-			res.status(200).json({ user: userData, message: "You are now logged in".cyan })
+			console.log(` loginSess line 79${req.session.logged_in}`.cyan)
+
+			// res.status(200).json({ user: userData, message: "You are now logged in".cyan })
 		})
 	} catch (error) {
 		res.status(400).json({ message: 'Trouble logging in', error })

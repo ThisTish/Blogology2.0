@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 // })
 
 
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const comment = await Blog.findByPk(req.params.id)
         res.status(200).json(comment)
