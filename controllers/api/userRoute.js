@@ -101,7 +101,7 @@ async function logout(req, res) {
 		const logged_in = await req.session.logged_in
 		if(logged_in){
 			await req.session.destroy(() => {
-				console.log(`logout route ln104: ${req.session.logged_in}`.red)
+				console.log(`logout route ln104: ${logged_in}`)
 				res.status(204).json({message:`logged out`}).end()
 			})
 	
