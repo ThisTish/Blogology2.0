@@ -4,7 +4,8 @@ const { Sequelize } = require('sequelize');
 // const isAuthenticated = require('../../utils/authorize');
 const { use } = require('./userRoute');
 
-// get blogs by logged in user/dashboard
+// get blogs by //todologged in
+//user/dashboard
 router.get('/dashboard', async (req, res) => {
 	// isAuthenticated,
 	try {
@@ -26,6 +27,15 @@ router.get('/dashboard', async (req, res) => {
 		console.log(error)
 		res.status(500).json({ message: 'Server Error' })
 	}
+})
+
+// new blog page
+router.get('/newBlog', async (req, res) => {
+		if(req.session.loggedIn){
+			res.redirect('/')
+			return
+		}
+		res.render('newBlog')
 })
 
 // get blog by id
@@ -62,7 +72,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // post a blog
-router.post('/', async (req, res) => {
+router.post('/newBlog', async (req, res) => {
 	// isAuthenticated,
 	try {
 		let { title, text} = req.body
@@ -77,7 +87,7 @@ router.post('/', async (req, res) => {
 			user_id: req.session.user_id
 		})
 		res.status(202).json(newBlog)
-		// todo make dashboard
+		
 		// res.redirect('/dashboard')
 
 		console.log(Object.keys(req.body))
@@ -121,7 +131,7 @@ router.put('/:id', async (req, res) => {
 		res.status(500).json({ message: 'Server Error updating post', error })
 	}
 })
-// ? i'm here. gotta work on logging in
+
 // add comment
 router.post('/:id/comment',  async (req, res) => {
 // isAuthenticated,

@@ -162,7 +162,7 @@
 // 		})
 // 		.catch(error => console.log(error))
 // })
-	// todo dashboard.handlbars
+	// // dashboard.handlbars
 		// {{#if loggedIn}}
 		// {{#if blogs}}
 		// <render blog cards>
@@ -171,7 +171,7 @@
 		// {{/if}}
 		// <btn><a href="/newblog">New Blog</a></btn>
 		// {{/if}}
-
+// ???? i'm here. routes done.
 //! WHEN I click on the button to add a new blog post
 //! THEN I am prompted to enter both a title and contents for my blog post
 // todorender newblog.handlebars
