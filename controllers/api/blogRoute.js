@@ -2,7 +2,6 @@ const router = require('express').Router()
 const {Blog, Comment, User} = require('../../models')
 const { Sequelize } = require('sequelize');
 // const isAuthenticated = require('../../utils/authorize');
-const { use } = require('./userRoute');
 
 // get blogs by //todologged in
 //user/dashboard
@@ -36,6 +35,23 @@ router.get('/newBlog', async (req, res) => {
 			return
 		}
 		res.render('newBlog')
+})
+
+// Delete a blog
+router.delete('/:id/delete', async (req, res) => {
+	// isAuthenticated,
+	console.log(`%cBlog delete triggered blogroutes ln 44`, `color: green`)
+	try {
+		const id = req.params.id;
+		const blog = await Blog.destroy({where: { blog_id: id }})
+		if(!blog) {
+			return res.status(404).json({ message: 'No blogs found' })
+		}
+		res.json({ message: 'Blog deleted' })
+	} catch (err) {
+		console.error(err)
+		res.status(500).json({ message: 'Server Error' })
+	}
 })
 
 // get blog by id
@@ -86,9 +102,9 @@ router.post('/newBlog', async (req, res) => {
 			text,
 			user_id: req.session.user_id
 		})
-		res.status(202).json(newBlog)
+		// res.status(202).json(newBlog)
 		
-		// res.redirect('/dashboard')
+		res.redirect('/dashboard')
 
 		console.log(Object.keys(req.body))
 	} catch (error) {
@@ -97,21 +113,6 @@ router.post('/newBlog', async (req, res) => {
 		}
 })
 
-// Delete a blog
-router.delete('/:id', async (req, res) => {
-	// isAuthenticated,
-	try {
-		const id = req.params.id;
-		const blog = await Blog.destroy({where: { blog_id: id }})
-		if(!blog) {
-			return res.status(404).json({ message: 'No blogs found' })
-		}
-		res.json({ message: 'Blog deleted' })
-	} catch (err) {
-		console.error(err)
-		res.status(500).json({ message: 'Server Error' })
-	}
-})
 
 // update a blog
 router.put('/:id', async (req, res) => {

@@ -6,15 +6,14 @@
 		<ul>
 			{{#each blogs as |blog|}}
 				<li>{{this.title}}</li>
-				<button id="edit-blog-btn"><a href="/blog/{{this.blog_id}}">Edit</a></button>
-				<button id="delete-blog-btn"><a href="/blog/{{this.blog_id}}">Delete</a></button>
+				<button type="button" id="edit-blog-btn"><data-blog-id="{{blogs.blog_id}}">Edit</button>
+				<button type="button" id="delete-blog-btn" data-blog-id="{{this.blog_id}}">Delete</button>
 			{{/each}}
 		</ul>
 	{{else}}
 		<p>No blogs found.</p>
 	{{/if}}
 	
-	{{!-- todo not working....start here --}}
 	</a><button type="button" id="new-blog"><a href="api/blogs/newBlog">Create New Blog </a></button>
 </body>
 </html>
