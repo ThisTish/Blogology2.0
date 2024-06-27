@@ -14,45 +14,38 @@
 				<li>
 					<a href='/'>Home,</a>
 				</li>
-				
-				{{!-- {{#if loggedIn}} --}}
+			
 				<li>
 					<a href="/dashboard">dashboard</a>
 				</li>
-				<li>
-					{{!-- <button class="no-button" id="logout">logout</button> --}}
 
+				{{#if logged_in}}
+				<li>
 					<a id="logout" href ="#">Logout</a>
 				</li>
 					
-				{{!-- {{else}} --}}
+				{{else}}
 				<li>
 					<a href="/login">Login</a>
 				</li>
-
-				{{!-- login modal --}}
-
-
-
+				
 				<li>
 					<a href="/signup">Sign Up</a>
 				</li>
+				{{/if}}
 
-				{{!-- sign up modal --}}
-
-				{{!-- {{/if}} --}}
-					{{!-- <a href="/api/blogs">Blogs</a> --}}
 			</ul>
 		</nav>
 	</header>
+
 	<main class="container ">
 		{{{body}}}
 	</main>
 
 	<footer>
 	</footer>
-{{!-- todo if logged in show logout script --}}
-	{{!-- <script src="../../public/js/login.js"></script> --}}
+	{{#if logged_in}}
 	<script src="/js/logout.js"></script>
+	{{/if}}
 </body>
 </html>

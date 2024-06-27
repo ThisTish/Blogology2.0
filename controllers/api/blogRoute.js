@@ -1,9 +1,9 @@
 const router = require('express').Router()
 const {Blog, Comment, User} = require('../../models')
 const { Sequelize, json } = require('sequelize');
-// const isAuthenticated = require('../../utils/authorize');
+const isAuthenticated = require('../../utils/authorize');
 
-// get blogs by //todologged in
+// get blogs by //todologged in-views different
 //user/dashboard
 router.get('/dashboard', async (req, res) => {
 	// isAuthenticated,
@@ -38,8 +38,8 @@ router.get('/newBlog', async (req, res) => {
 })
 
 // Delete a blog
-router.delete('/:id/delete', async (req, res) => {
-	// isAuthenticated,
+router.delete('/:id/delete', isAuthenticated, async (req, res) => {
+	
 	console.log(`%cBlog delete triggered blogroutes ln 44`, `color: green`)
 	try {
 		const id = req.params.id;
@@ -110,8 +110,8 @@ router.get('/:id', async (req, res) => {
 })
 
 // post a blog
-router.post('/newBlog', async (req, res) => {
-	// isAuthenticated,
+router.post('/newBlog', isAuthenticated, async (req, res) => {
+	
 	try {
 		let { title, text} = req.body
 
@@ -135,31 +135,24 @@ router.post('/newBlog', async (req, res) => {
 		}
 })
 
-
 // update a blog
-router.put('/:id', async (req, res) => {
-	// isAuthenticated,
+router.put('/:id', isAuthenticated, async (req, res) => {
+	
 	try {
 		const { title, text } = req.body
-// !not getting title or text
 		if(!title || !text){
 			console.log(`error no content to update`)
 			return
 		}
 
 		const id = req.params.id
-		console.log(`blogroute id : ${id}`)
 		const blog = await Blog.findByPk(id)
-		console.log(`put blog route ln 146: ${blog}`.yellow)
 
 		if(!blog) {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
 		const newBlog = await blog.update({ title, text })
-		console.log(`updating blog route ln 150: ${newBlog}`.yellow)
 		res.status(202).json(newBlog)
-		//todo  not acutally updateing
-		// res.redirect('/dashboard')
 
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error updating post', error })
@@ -167,8 +160,8 @@ router.put('/:id', async (req, res) => {
 })
 
 // add comment
-router.post('/:id/comment',  async (req, res) => {
-// isAuthenticated,
+router.post('/:id/comment', isAuthenticated, async (req, res) => {
+
 	try {
 		const id = req.params.id
 		const blog = await Blog.findOne({
@@ -191,12 +184,6 @@ router.post('/:id/comment',  async (req, res) => {
 		})
 
 		const fullPost = await blog.addComment(comment)
-
-		const context = {
-			fullPost,
-			logged_in: req.session.logged_in
-		}
-		// res.status(202).json(context)
 
 		res.redirect(`/api/blogs/${id}`)
 		

@@ -1,12 +1,15 @@
-// todo, jquery
-// todo tailwind
-// todo login sign up modal
+// ideas, jquery
+// ideas tailwind
+// ideas login sign up modal
 
 
 // todo isAuthenticated is commented out everywhere. will place back in to places if needed. causing to many changes to session
-
-
-
+// todo pass logged_in anytime rendering?
+// todo combine login/signup page.-easier when first trying to get to dashboard when not logged in
+// todo make blog cards partial so dashboard and homepage show same.-dashboard not showing content
+// todo homepage only needs blog title and date created
+	//* todo, if i make accordion, then add 'add comment as an option and redirect to blog/:id page
+//*format date cool?
 
 //! WHEN I visit the site for the first time
 //! THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
@@ -198,31 +201,31 @@
 //// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 //! WHEN I click on one of my existing posts in the dashboard
 //! fills form with values from blog selected.
-// todo create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
-// todo edit blog route
-// router.get('/blogs/:id', (req, res)=>{
-// 	Blog.findByPk(req.params.id)
-// 	.then((blog)=> res.render('editBlog', {blog}))
-// })
-// THEN I am able to delete or update my post and taken back to an updated dashboard
-	// 	router.put('/blogs/:id', (req, res) =>{
-	// 		Blog.update(req.body)
-	// 		.then((blogs)=> res.redirect('/dashboard'))
-	// 		.catch((error) => console.log(error))
-	// 	})
-	// router.delete('blogs/:id', async (req, res) =>{
-	// 	const blog = await Blog.findByPk(req.params.id)
+// tried:couldn't  create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
+// // edit blog route
+//// router.get('/blogs/:id', (req, res)=>{
+//// 	Blog.findByPk(req.params.id)
+//// 	.then((blog)=> res.render('editBlog', {blog}))
+//// })
+//// THEN I am able to delete or update my post and taken back to an updated dashboard
+//	// 	router.put('/blogs/:id', (req, res) =>{
+//	// 		Blog.update(req.body)
+//	// 		.then((blogs)=> res.redirect('/dashboard'))
+//	// 		.catch((error) => console.log(error))
+//	// 	})
+//	// router.delete('blogs/:id', async (req, res) =>{
+//	// 	const blog = await Blog.findByPk(req.params.id)
 	// 	// error check
-	// 	await blog.destroy()
-	// 	res.redirect('/dashboard')
-	// })
+//	// 	await blog.destroy()
+//	// 	res.redirect('/dashboard')
+//	// })
 	
 ////  study express sessions for this.....stuff..
 // //WHEN I click on the logout option in the navigation
 // //THEN I am signed out of the site
-// WHEN I am idle on the site for more than a set time
-// THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
-
+//! WHEN I am idle on the site for more than a set time
+//! THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
+//todo add {{#if logged in's and isAuth}}
 
 // *ROUTES/ENDPOINTS TO MAKE
 //? generalize into groups?
@@ -230,9 +233,9 @@
 // '/signup'
 // '/login'
 // '/blogs'
-'/dashboard'
-'/newBlog'
-'/comment'
+//'/dashboard'
+//'/newBlog'
+//'/comment'
 
 
 // *MODELS TO MAKE
@@ -255,13 +258,13 @@
 	// comment-form -- used in blog
 
 	// *SUBLAYOUTS
-//   todo dashboard.handlebars//?how would you make another layout if you wanted another skeleton for this?
+//   idea dashboard.handlebars//?how would you make another layout if you wanted another skeleton for this?
 //   blogs.handlebars--for each blog of blogs >blog-details
 //   signup.handlebars-- >user-form (buttons based on endpoint?)
 //   login.handlebars--  >user-form (buttons based on endpoint?)
 //   blog.handlebars-- >blog-details(once) & >comment-details & >comment-form//?maybe make a button to add comment?
-//   todo newBlog.handlebars-- >blog-form(empty with create buttons)
-//   todo editBlog.handlebars-- >blog-form(filled with values and with edit/cancel/delete buttons)
+//    newBlog.handlebars-- >blog-form(empty with create buttons)
+//    editBlog.handlebars-- >blog-form(filled with values and with edit/cancel/delete buttons)
 	// *HELPERS
 
 

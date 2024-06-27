@@ -4,6 +4,8 @@ const Comment = require('../../models/Comment')
 const Blog = require('../../models/Blog')
 const sequelize = require('sequelize')
 // get all comments
+// ?dunno if needed. or used.
+
 router.get('/', async (req, res) => {
     try {
         const comments = await Comment.findAll()
@@ -22,27 +24,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-// ?post comment is in blog api controller
-// router.post('/:id', async (req, res) => {
-//     try {
-//         const blog = await Blog.findByPk(req.params.id)
-//         let { comment, user_id, blog_id } = req.body
-//         const commentDetails = await Blog.create({ comment, user_id, blog_id })
-
-//         const context = {
-//             commentDetails,
-//             blog,
-//             logged_in: req.session.logged_in
-//         }
-//         res.status(200).json(context)
-//         // todo recieve blog info as well with through association
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json({ message: 'Server Error', error })
-//     }
-// })
-
-
+// ?dunno if needed. or used.
 router.put('/:id', async (req, res) => {
     try {
         const comment = await Blog.findByPk(req.params.id)
@@ -54,6 +36,8 @@ router.put('/:id', async (req, res) => {
 })
 
 // delete comment
+// ?dunno if needed. or used.
+
 router.delete('/delete/:id', async (req, res) => {
     const commentId = req.params.id
 

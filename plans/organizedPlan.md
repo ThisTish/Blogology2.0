@@ -15,19 +15,19 @@
 <!-- - Sync Sequelize models with the database. -->
 
 ## seeds
-- blog <!--todo create seed comments & created by -->rrrrr
+- blog <!-- create seed comments & created by -->rrrrr
 <!-- - user -->
 <!-- - comment -->
 
 ## Routes and Controllers
 ### General Routes
 <!-- - **Homepage (`'/'`)**: Display all blogs. -->
-- **Signup (`'/signup'`)**: Show signup form
-- **Login (`'/login'`)**: Show login form.
+<!-- - **Signup (`'/signup'`)**: Show signup form -->
+<!-- - **Login (`'/login'`)**: Show login form. -->
 <!-- - **Individual Blog (`'/blogs/:id'`)**: Display a single blog with comments. -->
-- **Dashboard (`'/dashboard'`)**: Display user-specific blogs.
-- **New Blog (`'/blog'`)**: Show form to create a new blog.
-- **Edit Blog (`'/blog/:id'`)**: Show form to edit a specific blog.
+<!-- - **Dashboard (`'/dashboard'`)**: Display user-specific blogs. -->
+<!-- - **New Blog (`'/blog'`)**: Show form to create a new blog. -->
+<!-- - **Edit Blog (`'/blog/:id'`)**: Show form to edit a specific blog. -->
 
 ### Auth Routes
 <!-- - **Sign Up (`POST /signup`)**: Handle user registration. -->
@@ -38,19 +38,19 @@
 <!-- - **Create Blog (`POST /newBlog`)**: Handle creating a new blog post. -->
 <!-- - **Update Blog (`PUT /blogs/:id`)**: Handle updating an existing blog post. -->
 <!-- - **Delete Blog (`DELETE /blogs/:id`)**: Handle deleting a blog post. -->
-- **Create Comment (`POST /blogs/:id/comment`)**: Handle creating a new comment on a blog post.
+<!-- - **Create Comment (`POST /blogs/:id/comment`)**: Handle creating a new comment on a blog post. -->
 
 ## Handlebars Templates
 ### Main Layout
 
 ### Views
 <!-- - **Blogs Listing**: `blogs.handlebars` -->
-- **Signup**: `signup.handlebars`
-- **Login**: `login.handlebars`
-- **Single Blog**: `blog.handlebars`
-- **Dashboard**: `dashboard.handlebars`
-- **New Blog**: `newBlog.handlebars`
-- **Edit Blog**: `editBlog.handlebars`
+<!-- - **Signup**: `signup.handlebars` -->
+<!-- - **Login**: `login.handlebars` -->
+<!-- - **Single Blog**: `blog.handlebars` -->
+<!-- - **Dashboard**: `dashboard.handlebars` -->
+<!-- - **New Blog**: `newBlog.handlebars` -->
+<!-- - **Edit Blog**: `editBlog.handlebars` -->
 
 ## Middleware and Helpers
 <!-- - **Authentication Middleware**: Ensure routes like dashboard and blog creation are protected. -->

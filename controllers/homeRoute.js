@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {User, Blog, Comment} = require('../models')
 const { Sequelize } = require('sequelize')
-// const isAuthenticated = require('../utils/authorize')
+const isAuthenticated = require('../utils/authorize')
 const colors = require('colors')
 const session = require('express-session')
 
@@ -10,10 +10,10 @@ router.get('/', async (req, res) => {
 	try {
 		const blogData = await Blog.findAll({
 			include:[
-				
 				{
 					model: User,
 					attributes: ['username']
+					// exclude?
 				},
 				{
 					model: Comment,
@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
 						{
 							model: User,
 							attributes: ['username']
+							// exclude?
 						}
 					]
 				}
@@ -36,7 +37,7 @@ router.get('/', async (req, res) => {
 		console.log(`Home Route ln 36: logged in: ${req.session.logged_in}`.yellow)
 		res.render('homepage', {
 			blogs,
-			logged_In: req.session.logged_in
+			logged_in: req.session.logged_in
 		})
 	} catch (error) {
 		res.status(500).json({msg:`Trouble getting blogs:`, error})
@@ -44,8 +45,8 @@ router.get('/', async (req, res) => {
 })
 
 // check if authorized/loggedin before going to user dashboard
-router.get('/dashboard',  async (req, res) => {
-	// isAuthenticated,
+router.get('/dashboard', isAuthenticated,  async (req, res) => {
+	
 	try {
 		const userData = await User.findByPk(req.session.user_id,{
 			attributes: {
@@ -62,12 +63,9 @@ router.get('/dashboard',  async (req, res) => {
 				}
 			]
 		})
-
 		const user = userData.get({plain: true})
-
 		res.render('dashboard', {
 			...user,
-			// logged_in: true
 		})
 	} catch (error) {
 		res.status(500).json({msg:`Trouble loading dashboard:`, error})
