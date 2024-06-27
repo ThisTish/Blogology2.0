@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {Blog, Comment, User} = require('../../models')
-const { Sequelize } = require('sequelize');
+const { Sequelize, json } = require('sequelize');
 // const isAuthenticated = require('../../utils/authorize');
 
 // get blogs by //todologged in
@@ -54,10 +54,32 @@ router.delete('/:id/delete', async (req, res) => {
 	}
 })
 
+// edit blog form
+router.get('/:id/editBlog', async (req, res) =>{
+	try{
+		const id = req.params.id
+		const blogData = await Blog.findOne({
+			where: {blog_id: id}
+		})
+		if(!blogData){
+			res.status(404).json({message: `no blog found`})
+		}
+		
+		const blog = await blogData.get({plain: true})
+		console.log(`got blog data ln 72:${Object.keys(blog)}`.green)
+		
+		// res.json(blog)
+		res.render('editBlog', blog)
+	}
+	catch(error){
+		console.log(error.red)
+	}
+})
+	
 // get blog by id
 router.get('/:id', async (req, res) => {
 	try {
-		const id = req.params.id;
+		const id = req.params.id
 		const blogData = await Blog.findOne({
 			where: { blog_id: id },
 			include: [
@@ -118,14 +140,25 @@ router.post('/newBlog', async (req, res) => {
 router.put('/:id', async (req, res) => {
 	// isAuthenticated,
 	try {
-		let { title, text } = req.body
+		const { title, text } = req.body
+// !not getting title or text
+		if(!title || !text){
+			console.log(`error no content to update`)
+			return
+		}
+
 		const id = req.params.id
-		const blog = await Blog.findOne({where: { blog_id: id }})
+		console.log(`blogroute id : ${id}`)
+		const blog = await Blog.findByPk(id)
+		console.log(`put blog route ln 146: ${blog}`.yellow)
+
 		if(!blog) {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
-		const newBlog = await Blog.update({ title, text }, { where: { blog_id: id }})
+		const newBlog = await blog.update({ title, text })
+		console.log(`updating blog route ln 150: ${newBlog}`.yellow)
 		res.status(202).json(newBlog)
+		//todo  not acutally updateing
 		// res.redirect('/dashboard')
 
 	} catch (error) {

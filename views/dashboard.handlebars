@@ -6,7 +6,7 @@
 		<ul>
 			{{#each blogs as |blog|}}
 				<li>{{this.title}}</li>
-				<button type="button" id="edit-blog-btn"><data-blog-id="{{blogs.blog_id}}">Edit</button>
+				<button type="button" id="edit-blog-btn" data-blog-id="{{this.blog_id}}"><a href="/api/blogs/{{this.blog_id}}/editBlog"> Edit </a></button>
 				<button type="button" id="delete-blog-btn" data-blog-id="{{this.blog_id}}">Delete</button>
 			{{/each}}
 		</ul>
@@ -15,5 +15,5 @@
 	{{/if}}
 	
 	</a><button type="button" id="new-blog"><a href="api/blogs/newBlog">Create New Blog </a></button>
-</body>
-</html>
+
+	<script src="/js/deleteBlog.js"></script>

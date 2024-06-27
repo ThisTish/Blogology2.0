@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', (event) =>{
 	const deleteBlogBtn = document.querySelector('#delete-blog-btn')
 
 	deleteBlogBtn.addEventListener('click', deleteBlogFunction)
-	console.log(`event listener attached ln9logoutjs`)
 })
 
 const deleteBlogFunction = async (event) =>{
@@ -17,7 +16,7 @@ const deleteBlogFunction = async (event) =>{
 	})
 
 	if(response.ok){
-		document.location.replace('/')
+		document.location.replace('/dashboard')//changed, not checked
 	} else {
 		alert(response.statusText)
 	}

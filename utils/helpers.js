@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
 
 // Logging middleware
 const reqLog = (req, res, next) => {
@@ -11,6 +11,8 @@ const format_date = (date) => {
     return date.toLocaleDateString()
 
 }
+
+
 
     
 module.exports = {reqLog, format_date}

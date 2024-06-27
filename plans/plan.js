@@ -12,12 +12,12 @@
 //! THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 
 // todo what to do if there aren't any. 
 // // create Blog model
-	// homepageRoute
-	// app.get('/', (req, res) =>{
-	// 	Blog.findAll({raw:true})
-	// 	.then((blogs) => res.render('blogs', ({blogs})))
-	// })
-	//  main.handlebars & blog.handlebars
+////	// homepageRoute
+////	// app.get('/', (req, res) =>{
+////	// 	Blog.findAll({raw:true})
+////	// 	.then((blogs) => res.render('blogs', ({blogs})))
+////	// })
+////	//  main.handlebars & blog.handlebars
 
 ////  navigation links for the homepage and the dashboard and the option to log in
 //	// <header>
@@ -64,49 +64,49 @@
 	// *or new page? new page right now
 // // create signup submit function
 ////finish creating signup.handlebars
-		//basic form
-		// <form action="/signup" method = POST>
-		// <label for="username">Username:</lablel>
-		// <input type="text" name="username" id="blah" class="blah" placeholder="?" maxlength="25" value="{{username}}">
+	//	//basic form
+	//	// <form action="/signup" method = POST>
+	//	// <label for="username">Username:</lablel>
+	//	// <input type="text" name="username" id="blah" class="blah" placeholder="?" maxlength="25" value="{{username}}">
 		//// <label for="email">Email:</lablel>
 		//// <input type="text" name="email" id="blah" class="blah" placeholder="?" maxlength="25" value="{{email}}">
-		// <label for="password">Password:</lablel>
-		// <input type="text" name="password" id="blah" class="blah" placeholder="?" maxlength="25" value="{{password}}">
-		// <input type="submit" value="sign-up" class="btn">
+	//	// <label for="password">Password:</lablel>
+	//	// <input type="text" name="password" id="blah" class="blah" placeholder="?" maxlength="25" value="{{password}}">
+	//	// <input type="submit" value="sign-up" class="btn">
 
 //!WHEN I click on the sign-up button
 //!THEN my user credentials are saved and I am logged into the site
 	// // *signUpRoute-turn async?
-	// router.post('/', (req, res) =>{
-	// 	let {username, password} = req.body
-	// 	User.create({
-	// 		username,
-	// 		password
-	// 	})
-	// 	.then((login) => res.redirect('/dashboard'))
-		// .catch()
-	// })
-//  create model for User-add hook to modal for hashing password on create
-//  add validations and catches
+//	// router.post('/', (req, res) =>{
+//	// 	let {username, password} = req.body
+//	// 	User.create({
+//	// 		username,
+//	// 		password
+//	// 	})
+//	// 	.then((login) => res.redirect('/dashboard'))
+//		// .catch()
+//	// })
+////  create model for User-add hook to modal for hashing password on create
+////  add validations and catches
 
 //! WHEN I revisit the site at a later time and choose to sign in
 //! THEN I am prompted to enter my username and password
 // // create login submit function
 // // test by changing the time on the cookie
-//  make sure there is a limit on session/cookie.
+//  //make sure there is a limit on session/cookie.
 ////  create login form - login.handlbars
-	// router.get('/login', (req, res) => res.render('login'))//in home-routes.js controller with if statements of if logged in, redirect('/dashboard' or '/')
+	//// router.get('/login', (req, res) => res.render('login'))//in home-routes.js controller with if statements of if logged in, redirect('/dashboard' or '/')
 // // finish login logic for loginRoute
-	// router.post('/login', (req, res) =>{
-	// 	let {username, password} = req.body
-	// 	User.findOne({
-	// 		where:{
-	// 			username: username
+	// //router.post('/login', (req, res) =>{
+	// 	//let {username, password} = req.body
+	// 	//User.findOne({
+	// 	//	where:{
+	// 	//		username: username
 	// 			// validate password.
 	// 			// example loggin logic in 14MVC 01-17-controllers-api-user-routes.js(andlogout)
-	// 		}
-	// 	})
-	// })
+	// 	//	}
+	// 	//})
+	// //})
 
 //!WHEN I am signed in to the site
 //! THEN I see navigation links for the homepage, the dashboard, and the option to log out
@@ -139,62 +139,61 @@
 //! THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
 	// // create comment form & handlebars
 	// // create function to handle submit(add & post comment)
-// router.post('/blogs/:id', (req, res) =>{
-	// 	Comment.create({
-	// 		text: req.body.text,
-	// 		username: getUsername(session.user.name),//???
-	// 		date: new Date(format_date(now))
+//// router.post('/blogs/:id', (req, res) =>{
+//	// 	Comment.create({
+//	// 		text: req.body.text,
+//	// 		username: getUsername(session.user.name),//???
+//	// 		date: new Date(format_date(now))
 	// 		// todo make format_date helper
-	// 	})
-	// 		.then((posts) =>res.render('blog', {posts}))
-	// 		.catch(error => console.log(error))
-	// })
+//	// 	})
+//	// 		.then((posts) =>res.render('blog', {posts}))
+//	// 		.catch(error => console.log(error))
+//	// })
 
 //! WHEN I click on the dashboard option in the navigation
 //! THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-//  get dashboardRoute
-// router.get('/dashborad', (req, res) =>{
-// 	Blog.findAll({
-// 		where: {createdById : loggedInId}
-// 	})
-// 		.then((blogs) =>{
-// 			res.render('dashboard', {blogs})
-// 		})
-// 		.catch(error => console.log(error))
-// })
+////  get dashboardRoute
+//// router.get('/dashborad', (req, res) =>{
+//// 	Blog.findAll({
+//// 		where: {createdById : loggedInId}
+//// 	})
+//// 		.then((blogs) =>{
+//// 			res.render('dashboard', {blogs})
+//// 		})
+//// 		.catch(error => console.log(error))
+//// })
 	// // dashboard.handlbars
-		// {{#if loggedIn}}
-		// {{#if blogs}}
-		// <render blog cards>
-		// {{else}}
-		// <p>Create your first post!</p
-		// {{/if}}
-		// <btn><a href="/newblog">New Blog</a></btn>
-		// {{/if}}
-// ???? i'm here. routes done.
+	//	// {{#if loggedIn}}
+	//	// {{#if blogs}}
+	//	// <render blog cards>
+	//	// {{else}}
+	//	// <p>Create your first post!</p
+	//	// {{/if}}
+	//	// <btn><a href="/newblog">New Blog</a></btn>
+	//	// {{/if}}
 //! WHEN I click on the button to add a new blog post
 //! THEN I am prompted to enter both a title and contents for my blog post
-// todorender newblog.handlebars
-// router.get('/newblog', (req, res) => res.render('newblog'))
-	// todo newblog.handlebars
-	// todo newBlog form & handlebars
+//  //render newblog.handlebars
+//// router.get('/newblog', (req, res) => res.render('newblog'))
+	// // newblog.handlebars
+	// // newBlog form & handlebars
 	// // function for submit
-		//partially done
-		// <blog form>
-		// <input type="text" action="/newblog" method = "POST">
+	//	//partially done
+	//	// <blog form>
+	//	// <input type="text" action="/newblog" method = "POST">
 	// //  post newBlogRoute
-	// router.post('/newblog', (req, res) =>{
-	// 	Blog.create(req.body)
-	// 		const post ={
-	// 		"title": req.body.title,
-	// 		"content": req.body.content,
-	// 		"author": loggedIn.username,//getting closer
+	//// router.post('/newblog', (req, res) =>{
+	//// 	Blog.create(req.body)
+	//// 		const post ={
+	//// 		"title": req.body.title,
+	//// 		"content": req.body.content,
+	//// 		"author": loggedIn.username,//getting closer
 	// 		// session.username?
-	// 		"createdOn": createdOnTimestamp
-	// 	}
-	// 	.then((post) = res.redirect('/dashboard'))
-	// 	.catch((error)=>console.log(error))
-	// })
+	//// 		"createdOn": createdOnTimestamp
+	//// 	}
+	//// 	.then((post) = res.redirect('/dashboard'))
+	//// 	.catch((error)=>console.log(error))
+	//// })
 //// WHEN I click on the button to create a new blog post
 //// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 //! WHEN I click on one of my existing posts in the dashboard
