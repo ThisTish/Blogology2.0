@@ -66,28 +66,13 @@ router.get('/dashboard', isAuthenticated,  async (req, res) => {
 		const user = userData.get({plain: true})
 		res.render('dashboard', {
 			...user,
+			logged_in: req.session.logged_in
 		})
 	} catch (error) {
 		res.status(500).json({msg:`Trouble loading dashboard:`, error})
 	}
 })
 
-// render signup page
-router.get('/signup', (req, res) => {
-	if(req.session.loggedIn){
-		res.redirect('/')
-		return
-	}
-	res.render('signup')
-})
-// render login page
-router.get('/login', (req, res) => {
-	if(req.session.loggedIn){
-		res.redirect('/')
-		return
-	}
-	res.render('login')
-})
 
 
 module.exports = router

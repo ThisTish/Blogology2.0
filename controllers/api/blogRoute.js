@@ -5,37 +5,37 @@ const isAuthenticated = require('../../utils/authorize');
 
 // get blogs by //todologged in-views different
 //user/dashboard
-router.get('/dashboard', async (req, res) => {
-	// isAuthenticated,
-	try {
+// router.get('/dashboard', async (req, res) => {
+// 	// isAuthenticated,
+// 	try {
 
-		const userId = req.session.user_id
-		const blogsData = await Blog.findAll({where: {
-			user_id: userId
-			}
-		})
-		if(!blogsData || blogsData.length === 0) {
-			return res.status(404).json({ message: 'No blogs found' })
-		}
+// 		const userId = req.session.user_id
+// 		const blogsData = await Blog.findAll({where: {
+// 			user_id: userId
+// 			}
+// 		})
+// 		if(!blogsData || blogsData.length === 0) {
+// 			return res.status(404).json({ message: 'No blogs found' })
+// 		}
 
-		const blogs = blogsData.map(blog => blog.get({ plain: true }))
+// 		const blogs = blogsData.map(blog => blog.get({ plain: true }))
 
-		res.json(blogs)
-		// res.render('dashboard', {blogs})
-	} catch (error) {
-		console.log(error)
-		res.status(500).json({ message: 'Server Error' })
-	}
-})
+// 		res.json(blogs)
+// 		// res.render('dashboard', {blogs})
+// 	} catch (error) {
+// 		console.log(error)
+// 		res.status(500).json({ message: 'Server Error' })
+// 	}
+// })
 
 // new blog page
-router.get('/newBlog', async (req, res) => {
-		if(req.session.loggedIn){
-			res.redirect('/')
-			return
-		}
-		res.render('newBlog')
-})
+// router.get('/newBlog', async (req, res) => {
+// 		if(req.session.loggedIn){
+// 			res.redirect('/')
+// 			return
+// 		}
+// 		res.render('newBlog')
+// })
 
 // Delete a blog
 router.delete('/:id/delete', isAuthenticated, async (req, res) => {
@@ -55,7 +55,7 @@ router.delete('/:id/delete', isAuthenticated, async (req, res) => {
 })
 
 // edit blog form
-router.get('/:id/editBlog', async (req, res) =>{
+router.get('/:id/editBlog', isAuthenticated, async (req, res) =>{
 	try{
 		const id = req.params.id
 		const blogData = await Blog.findOne({
@@ -103,7 +103,10 @@ router.get('/:id', async (req, res) => {
 		console.log(blog)
 
 		// res.status(204).json(blog)
-		res.render('blog', {blog})
+		res.render('blog', {
+			blog,
+			logged_in: req.session.logged_in
+		})
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error', error })
 	}
