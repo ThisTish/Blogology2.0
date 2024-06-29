@@ -1,22 +1,28 @@
-{{!-- <div class="modal"> --}}
-	{{!-- <div class="close-btn">&times;</div> --}}
+{{!-- <div id="login-modal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+	<div class="flex items-center justify-center min-h-screen">
 
-	<form class="form login-form" action="/api/users/login" method="POST">
-		<h2>Log in!</h2>
-		<div class="form-element">
-			<label for="username">Username</label>
-			<input type="text" id="username" name="username" placeholder="username">
+		<div class="bg-neutral-700 max-w-md w-full">
+			<div class="flex justify-between items-center text-white">
+				<h2 class="text-2xl px-2 space-grotesk">Log In.</h2>
+				<div id="close-btn" class="px-2 hover:text-neutral-900 font-bold">&times;</div>
+			</div>
 		</div>
-		<div class="form-element">
-			<label for="password">Password</label>
-			<input type="password" id="password1" name="password" placeholder="********">
+
+
+	<form class="mt-4" action="/api/users/login" method="POST">
+		<div class="mb-4">
+			<label for="username"class="block text-sm font-medium text-neutral-500">Username</label>
+			<input type="text" id="username" name="username" placeholder="username" class="mt-1 block w-full px-3 py-2 border border-neutral-500 focus:outline-none focus:border-neutral-700 text-sm">
 		</div>
-		<div>
-			<button type="submit" id="login-btn">Login</button>
-			{{!-- <button type="reset" (or clear) id="close-btn">Cancel</button> --}}
+		<div class="mb-4">
+			<label for="password"class="block text-sm font-medium text-neutral-500">Password</label>
+			<input type="text" id="password" name="password" placeholder="*******" class="mt-1 block w-full px-3 py-2 border border-neutral-500 focus:outline-none focus:border-neutral-700 text-sm">
+		</div>
+
+		<div class="flex justify-end space-x-2">
+			<button type="button" id="close-btn" class="font-bold py-2 px-4 bg-neutral-400 text-white hover:text-neutral-950" >Cancel</button>
+			<button type="submit" id="login-btn" class="font-bold py-2 px-4 bg-neutral-600 text-white hover:text-neutral-950" >Login</button>
 		</div>
 	</form>
-{{!-- </div> --}}
-
-
-<script src="./js/login.js"></script>
+	</div>
+</div> --}}
