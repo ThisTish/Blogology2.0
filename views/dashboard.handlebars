@@ -1,19 +1,51 @@
 
-	<h1>Welcome to Your Dashboard</h1>
-	{{!-- ?do not need this --}}
-	<h2>Your Blogs</h2>
-	{{#if blogs.length}}
-		<ul>
-			{{#each blogs as |blog|}}
-				<li>{{this.title}}</li>
-				<button type="button" id="edit-blog-btn" data-blog-id="{{this.blog_id}}"><a href="/api/blogs/{{this.blog_id}}/editBlog"> Edit </a></button>
-				<button type="button" id="delete-blog-btn" data-blog-id="{{this.blog_id}}">Delete</button>
-			{{/each}}
-		</ul>
-	{{else}}
-		<p>No blogs found.</p>
-	{{/if}}
-	
-	</a><button type="button" id="new-blog"><a href="api/blogs/newBlog">Create New Blog </a></button>
+<h1>Welcome to Your Dashboard</h1>
+{{!-- ?do not need this --}}
+<h2>Your Blogs</h2>
+{{#if blogs.length}}
+	<ul>
+		{{#each blogs as |blog|}}
+			<li>{{this.title}}</li>
+			<button type="button" id="edit-blog-btn" data-blog-id="{{this.blog_id}}"><a href="/api/blogs/{{this.blog_id}}/editBlog"> Edit </a></button>
+			<button type="button" id="delete-blog-btn" data-blog-id="{{this.blog_id}}">Delete</button>
+		{{/each}}
+	</ul>
+{{else}}
+	<p>No blogs found.</p>
+{{/if}}
 
-	<script src="/js/deleteBlog.js"></script>
+{{#if logged_in}}
+<button type="button" id="new-blog-btn">Write New Blog</button>
+
+<script src="/js/deleteBlog.js"></script>
+{{/if}}
+
+<div id="new-blog-modal" class="fixed z-10 inset-0 m-auto mt-32 max-w-64 sm:max-w-sm md:max-w-xl lg:max-w-4xl overflow-y-auto">
+	<div class="flex flex-col items-center justify-center">
+
+		<div class="bg-neutral-700 w-full">
+			<div class="flex justify-between items-center text-white">
+				<h2 class="text-lg md:text-2xl p-3 space-grotesk">Post Blog</h2>
+				<button id="n-close-btn" class="px-3 hover:text-neutral-900 font-bold">&times;</button>
+			</div>
+		</div>
+
+		<form action="/api/blogs/newBlog" method="POST" class="px-2 py-3 bg-white w-full">
+			<div class="mb-4">
+				<label for="title" class="block text-sm font-medium text-neutral-700">Title</label>
+				<input type="text" id="title" name="title" class="mt-1 block w-full px-3 py-2 border border-neutral-300 focus:outline-none focus:border-neutral-700 text-sm">
+			</div>
+			
+			<div class="mb-4">
+				<label for="text" class="block text-sm font-medium text-neutral-700">Content</label>
+				<textarea type="text" id="text" name="text" class="mt-1 h-32 block w-full px-3 py-2 border border-neutral-300 focus:outline-none focus:border-neutral-700 text-sm"></textarea>
+			</div>
+
+			<div class="flex justify-between space-x-2">
+				<button type="button" id="n-cancel-btn" class="font-bold py-2 px-4 bg-neutral-400 text-white hover:text-neutral-950" >Cancel</button>
+				<button type="submit" id="post-blog-btn" class="font-bold py-2 px-4 bg-neutral-600 text-white hover:text-neutral-950" >POST</button>
+			</div>
+
+		</form>
+	</div>
+</div>
