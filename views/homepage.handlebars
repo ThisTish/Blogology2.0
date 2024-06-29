@@ -1,11 +1,22 @@
-<ul>
-	{{#each blogs as |blog|}}
-		<li><a href="api/blogs/{{blog_id}}">{{title}}</a></li>
-			<p>{{text}} </p>
-			<p>Created: {{format_date createdAt}}</p>
-			<p>Created By: {{user.username}}</p>
-			<div>
-				<h4>Comments:</h4>
+<div class="m-3 md:m-10 flex flex-col justify-center bg-neutral-300">
+{{#each blogs as |blog|}}
+	<div class="flex flex-col space-y-5">
+		<div class="mx-3 my-5 md:mx-10">
+			<div class="flex flex-col items-center justify-between -my-1 mx-10 md:-my-3 p-2 bg-neutral-600 md:flex-row">
+				<a href="api/blogs/{{blog_id}}" class="text-md font-bold text-center text-white md:text-left md:text-lg lg:text-xl" >{{title}}</a>
+				<div class="flex space-x-2">
+					<p class="text-center text-xs text-neutral-950 md:text-sm">{{user.username}}</p>
+					<p class="text-center text-xs text-neutral-950  md:text-smfont-bold">|</p>
+					<p class="text-center text-xs text-neutral-950 md:text-sm">{{format_date createdAt}}</p>
+				</div>
+			</div>
+			<div class="bg-white h-12">
+				<p class=" p-3 truncate text-sm md:text-base">{{text}} </p>
+			</div>	
+		</div>
+	</div>
+
+			{{!-- <h4>Comments:</h4>
 				<ul>
 					{{#each comments as |comment|}}
 					<li>{{comment.comment}}
@@ -13,6 +24,8 @@
 					</li>
 					{{/each}}
 				</ul>
-			</div>
+			</div> --}}
 	{{/each}}
-</ul>
+
+	
+</div>

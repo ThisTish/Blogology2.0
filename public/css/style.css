@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .hero{
-	background-image: url('../images/story.jpg');
+	background-image: url('../images/backend.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -14,5 +14,13 @@
 	font-optical-sizing: auto;
 	font-weight: 700;
 	font-style: normal;
+}
+
+.text-shadow{
+	text-shadow: 2px 2px 4px #525252;
+}
+
+.icon-shadow{
+	text-shadow: 2px 2px 2px white;
 }
 

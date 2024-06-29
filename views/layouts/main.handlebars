@@ -13,46 +13,36 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header>
-		<nav class="relative mx-auto p-6 bg-zinc-600">
+	<header>
+		<nav class="mx-auto p-6 bg-neutral-600">
 			<div class="flex items-center justify-between">
 				<div class="pt-2 group">
-					<i class="material-icons text-white text-3xl md:text-5xl group-hover:hidden">roofing</i>
-					<span class="hidden group-hover:block text-white text-3xl">Home</span>
+					<i class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">roofing</i>
+					<a href="/" class="hidden md:group-hover:block text-white text-3xl">Home</a>
 				</div>
-				<div class="pt-2 shadow-md shadow-white">
-					<h1 class="font-sans text-4xl space-grotesk text-zinc-600 bg-white md:text-7xl">Blogology 2.0</h1>
+				<div class="pt-2 ">
+					<h1 class=" font-sans p-2 text-2xl md:text-4xl space-grotesk text-neutral-600 bg-white px-2 lg:text-7xl">Blogology 2.0</h1>
 				</div>
-				<div class="pt-2 group">
-					<div class="material-icons text-white text-3xl md:text-5xl group-hover:hidden">dashboard</div>
-					<span class="hidden group-hover:block text-white text-3xl">Dashboard</span>
+				<div class="pt-2 group bg-">
+					<div class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">dashboard</div>
+					<a href="/dashboard" class="hidden md:group-hover:block text-white text-3xl">Dashboard</a>
 
 				</div>
 			</div>
 		</nav>
 	</header>
-	<section class="hero relative flex flex-col items-center md:items-start px-6 h-72 w-full">
+
+	<section class="hero relative flex flex-col h-72 w-full">
+		{{#if logged_in}}
+			<a  id="logout" href ="#" class="absolute top-0 right-0 p-3 px-6 pt-2 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">Logout</a>
+		{{else}}
+			<a href="/login" class="p-3 px-6 pt-2 absolute top-0 left-0 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">Login</a>
+			<a href="/signup" class="p-3 px-6 pt-2 absolute bottom-0 left-0 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">Sign Up</a>
+		{{/if}}
 	</section>
 
-						{{#if logged_in}}
-						<li>
-							<a id="logout" href ="#">Logout</a>
-						</li>
-							
-						{{else}}
-						<li>
-							<a href="/login">Login</a>
-						</li>
-						
-						<li>
-							<a href="/signup">Sign Up</a>
-						</li>
-						{{/if}}
 
-					</ul>
-				
-
-	<main class="container ">
+	<main>
 		{{{body}}}
 	</main>
 
