@@ -9,7 +9,15 @@
 // todo make blog cards partial so dashboard and homepage show same.-dashboard not showing content
 // todo homepage only needs blog title and date created
 	//* todo, if i make accordion, then add 'add comment as an option and redirect to blog/:id page
+	
+	// design
+// todo add little snippet "Stories, insights, and advice that will transform how you design and build for the web." to homepage
 //*format date cool?
+//* username | date
+//*use lorem ipsum examples for blog posts when deployed
+
+
+
 
 //! WHEN I visit the site for the first time
 //! THEN I am presented with the homepage, which includes existing blog posts if any have been posted; 

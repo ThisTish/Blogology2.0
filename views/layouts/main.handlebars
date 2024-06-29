@@ -4,39 +4,53 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Blogology</title>
+	<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="/css/output.css">
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <header>
-		<h1>BLOGOLOGY</h1>
-		<nav>
-			<ul>
-				<li>
-					<a href='/'>Home,</a>
-				</li>
-			
-				<li>
-					<a href="/dashboard">dashboard</a>
-				</li>
+		<nav class="relative mx-auto p-6 bg-zinc-600">
+			<div class="flex items-center justify-between">
+				<div class="pt-2 group">
+					<i class="material-icons text-white text-3xl md:text-5xl group-hover:hidden">roofing</i>
+					<span class="hidden group-hover:block text-white text-3xl">Home</span>
+				</div>
+				<div class="pt-2 shadow-md shadow-white">
+					<h1 class="font-sans text-4xl space-grotesk text-zinc-600 bg-white md:text-7xl">Blogology 2.0</h1>
+				</div>
+				<div class="pt-2 group">
+					<div class="material-icons text-white text-3xl md:text-5xl group-hover:hidden">dashboard</div>
+					<span class="hidden group-hover:block text-white text-3xl">Dashboard</span>
 
-				{{#if logged_in}}
-				<li>
-					<a id="logout" href ="#">Logout</a>
-				</li>
-					
-				{{else}}
-				<li>
-					<a href="/login">Login</a>
-				</li>
-				
-				<li>
-					<a href="/signup">Sign Up</a>
-				</li>
-				{{/if}}
-
-			</ul>
+				</div>
+			</div>
 		</nav>
 	</header>
+	<section class="hero relative flex flex-col items-center md:items-start px-6 h-72 w-full">
+	</section>
+
+						{{#if logged_in}}
+						<li>
+							<a id="logout" href ="#">Logout</a>
+						</li>
+							
+						{{else}}
+						<li>
+							<a href="/login">Login</a>
+						</li>
+						
+						<li>
+							<a href="/signup">Sign Up</a>
+						</li>
+						{{/if}}
+
+					</ul>
+				
 
 	<main class="container ">
 		{{{body}}}

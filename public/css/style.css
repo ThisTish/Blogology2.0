@@ -1,32 +1,18 @@
-/* Reset default browser styles */
-body, h1, p {
-	margin: 0;
-	padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero{
+	background-image: url('../images/story.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
-/* Set a default font and font size */
-body {
-	font-family: Arial, sans-serif;
-	font-size: 16px;
+.space-grotesk{
+	font-family: "Space Grotesk", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
 }
 
-/* Add some basic styling to the page */
-h1 {
-	color: #333;
-	font-size: 24px;
-	margin-bottom: 10px;
-}
-
-p {
-	color: #666;
-	line-height: 1.5;
-}
-
-/* Add some basic layout styles */
-.container {
-	max-width: 960px;
-	margin: 0 auto;
-	padding: 20px;
-}
-
-/* Add more styles as needed */
