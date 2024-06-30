@@ -3,9 +3,10 @@ const router = express.Router()
 const Comment = require('../../models/Comment')
 const Blog = require('../../models/Blog')
 const sequelize = require('sequelize')
-// get all comments
-// ?dunno if needed.
 
+// *tested fine, but not in use
+
+// get all comments
 router.get('/', async (req, res) => {
     try {
         const comments = await Comment.findAll()
@@ -24,7 +25,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-// ?dunno if needed.
+// comment by id
 router.put('/:id', async (req, res) => {
     try {
         const comment = await Blog.findByPk(req.params.id)
@@ -36,8 +37,6 @@ router.put('/:id', async (req, res) => {
 })
 
 // delete comment
-// ?dunno if needed.
-
 router.delete('/delete/:id', async (req, res) => {
     const commentId = req.params.id
 
@@ -49,8 +48,7 @@ router.delete('/delete/:id', async (req, res) => {
 
     res.status(200).json({message: 'Deleted Comment Succesfully'})
 
-    // ?dunno if this is right
-    // res.redirect('/blog/:id')
+    // res.redirect('/blogs')
 })
 
 module.exports = router

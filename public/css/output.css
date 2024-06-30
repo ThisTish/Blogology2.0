@@ -723,10 +723,6 @@ video {
   max-width: 28rem;
 }
 
-.max-w-sm {
-  max-width: 24rem;
-}
-
 .flex-grow {
   flex-grow: 1;
 }
@@ -985,14 +981,6 @@ video {
   font-style: normal;
 }
 
-.text-shadow{
-  text-shadow: 2px 2px 4px #525252;
-}
-
-.icon-shadow{
-  text-shadow: 2px 2px 2px white;
-}
-
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
@@ -1163,10 +1151,6 @@ video {
 @media (min-width: 1024px) {
   .lg\:-mt-20 {
     margin-top: -5rem;
-  }
-
-  .lg\:max-w-2xl {
-    max-width: 42rem;
   }
 
   .lg\:max-w-4xl {

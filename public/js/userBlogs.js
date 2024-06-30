@@ -48,8 +48,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 		console.log('click update ln 5 editblogjs')
 		const blogId = updateBlogBtn.value
 		updateBlogFunction(blogId)
+		}
 	}
-}
+
 	const updateBlogFunction = async (blogId) =>{
 
 		const title = document.querySelector('#edit-title').value
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 		})
 
 		if(response.ok){
-			document.location.replace('/dashboard')//changed, not checked
+			document.location.replace('/dashboard')
 		} else {
 			alert(response.statusText)
 		}
@@ -105,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () =>{
 	if(eCloseBtn){
 	eCloseBtn.onclick = () =>{
 		editBlogModal.classList.add('hidden')
+		}
 	}
-}
 
-if(eCloseBtn){
-	eCancelBtn.onclick = () =>{
-		editBlogModal.classList.add('hidden')
+	if(eCloseBtn){
+		eCancelBtn.onclick = () =>{
+			editBlogModal.classList.add('hidden')
+		}
 	}
-}
 
 	// not working. margins too big(m-auto)
 	window.onclick = (event) =>{

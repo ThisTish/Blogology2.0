@@ -81,7 +81,6 @@ async function loginSess(req, res, userData) {
 // logout
 router.post('/logout', async (req, res) => {
 	await logout(req, res)
-	console.log(`logout router ln 99 clicked`.red)
 })
 	
 async function logout(req, res) {

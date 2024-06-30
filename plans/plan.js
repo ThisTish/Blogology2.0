@@ -5,7 +5,8 @@
 	// <button ... class="flex... {{#unless logged_in}} auth-btns {{/unless}}">Dashboard</button>
 // todo connect comment routes to page
 // todo seperate controllers & routes- userRoutes is half set-up to
-// todo better error handeling
+// todo better error handleing
+// todo window eventListener for modals-mix margins/positions
 // ?do i still need isAuthenticated
 
 // idea jquery
@@ -129,8 +130,8 @@
 //// THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
 //! WHEN I click on an existing blog post
 //! THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment  
-//? accordion?
-	// *goes to new page for now.
+//idea accordion?
+	// //goes to new page for now.
 	////  create blog.handlbar
 //		// partials
 //		// {{#if loggedIn}}
@@ -208,12 +209,13 @@
 	//// 	.then((post) = res.redirect('/dashboard'))
 	//// 	.catch((error)=>console.log(error))
 	//// })
-//// WHEN I click on the button to create a new blog post
-//// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+//!WHEN I click on the button to create a new blog post
+//! THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+
 //! WHEN I click on one of my existing posts in the dashboard
 //! fills form with values from blog selected.
-//todo make form & button functions
-// tried:couldn't.  create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
+//// make form & button functions
+// tried:couldn't get it to pass blog.  create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
 // // edit blog route
 //// router.get('/blogs/:id', (req, res)=>{
 //// 	Blog.findByPk(req.params.id)
@@ -237,7 +239,7 @@
 // //THEN I am signed out of the site
 //! WHEN I am idle on the site for more than a set time
 //! THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
-//todo add {{#if logged in}} to createBlog, Edit Blog, Delete Blog
+//// add {{#if logged in}} to createBlog, Edit Blog, Delete Blog
 
 // *ROUTES/ENDPOINTS TO MAKE
 //? generalize into groups?
@@ -284,9 +286,9 @@
 	// // submit login
 	// // submit logout
 	// // submit signup
-	// todo submit comment
+	// // submit comment
 	// // submit newBlog
-	// todo submit editBlog
+	// // submit editBlog
 
 // 1. Get database & tables set up
 // 2. sync sequelize and server

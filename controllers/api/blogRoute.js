@@ -67,7 +67,6 @@ router.get('/:id', async (req, res) => {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
 		const blog = blogData.get({plain: true})
-		console.log(blog)
 
 		// res.status(204).json(blog)
 		res.render('blog', {
@@ -98,7 +97,6 @@ router.post('/newBlog', isAuthenticated, async (req, res) => {
 		
 		res.redirect('/dashboard')
 
-		console.log(Object.keys(req.body))
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ message: 'Server Error', error })
