@@ -1,12 +1,13 @@
 
-<h1>Welcome to Your Dashboard</h1>
+<div>
+<h1 class="font-sans p-2 text-lg -mt-16 md:-mt-18 lg:-mt-20 absolute z-10 md:text-2xl lg:text-4xl space-grotesk text-neutral-600 bg-white bg-opacity-75">Welcome to Your Dashboard</h1>
+</div>
 {{!-- ?do not need this --}}
-<h2>Your Blogs</h2>
 {{#if blogs.length}}
-<div class="m-3 md:m-10 flex flex-col justify-center bg-neutral-300">
+<div class="m-3 md:m-10 flex flex-col justify-center">
 {{#each blogs as |blog|}}
-	<div class="flex flex-col ">
-		<div class="mx-3 my-5 md:mx-10 space-y-5">
+	<div class="flex flex-col bg-neutral-300 p-2 mb-9 md:p-0 md:pb-2 md:mb-20">
+		<div class="mx-3 mt-5 mb-2 md:mx-10 space-y-5">
 			<div class="flex flex-col items-center justify-between -my-6 mx-10 md:-my-7 p-2 px-3 bg-neutral-600 md:flex-row">
 				<a href="api/blogs/{{blog_id}}" class="text-md font-bold text-center text-white md:text-left md:text-lg lg:text-xl" >{{title}}</a>
 				<div class="flex space-x-2 px-3">
@@ -21,24 +22,16 @@
 		</div>
 
 		<div class="flex justify-end">
-			<button type="button" id="edit-blog-btn" class="font-bold m-2 py-2 px-4 bg-neutral-400 text-white hover:text-neutral-950" data-blog-id="{{blog_id}}" >Edit</button>
-			<button type="submit" id="delete-blog-btn" class="font-bold m-2 py-2 px-4 bg-neutral-600 text-white hover:text-neutral-950" data-blog-id="{{blog_id}}" >Delete</button>
+			<button type="button" id="edit-blog-btn" class="text-sm font-bold m-2 py-1 px-4 bg-neutral-400 text-white md:text-base hover:text-neutral-950" data-blog-id="{{blog_id}}" >Edit</button>
+			<button type="submit" id="delete-blog-btn" class="text-sm font-bold m-2 py-1 px-4 bg-neutral-600 text-white md:text-base hover:text-neutral-950" data-blog-id="{{blog_id}}" >Delete</button>
 		</div>
 	</div>
 {{/each}}
 </div>
 
-
 {{else}}
-	<p>No blogs found.</p>
+	<h2 class="text-base md:text-lg lg:text-3xl text-white bg-neutral-700 p-3 md:p-5 max-w-64 md:max-w-md lg:max-w-lg mx-auto mt-7 text-center">You don't have any blogs</h2>
 {{/if}}
-
-{{#if logged_in}}
-<button type="button" id="new-blog-btn">Write New Blog</button>
-
-<script src="/js/deleteBlog.js"></script>
-{{/if}}
-
 
 {{!-- new blog modal --}}
 <div id="new-blog-modal" class="fixed hidden z-10 inset-0 m-auto mt-32 max-w-64 sm:max-w-sm md:max-w-xl lg:max-w-4xl overflow-y-auto">
@@ -103,5 +96,5 @@
 </div>
 
 
-<script src="/js/blogModals.js"></script>
-<script src="/js/editBlog.js"></script>
+<script src="/js/userBlogs.js"></script>
+

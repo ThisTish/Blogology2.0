@@ -1,3 +1,5 @@
+// todo query select all, add event listner for close buttons and unAuthed login buttons
+
 // login modal
 const loginModal = document.getElementById('login-modal')
 const loginModalBtn = document.getElementById('login-btn')
