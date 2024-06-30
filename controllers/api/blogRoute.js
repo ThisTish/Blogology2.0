@@ -29,13 +29,13 @@ const isAuthenticated = require('../../utils/authorize');
 // })
 
 // new blog page
-router.get('/newBlog', async (req, res) => {
-		if(!req.session.logged_in){
-			res.redirect('/')
-			return
-		}
-		res.render('newBlog')
-})
+// router.get('/newBlog', async (req, res) => {
+// 		if(!req.session.logged_in){
+// 			res.redirect('/')
+// 			return
+// 		}
+// 		res.render('newBlog')
+// })
 
 // Delete a blog
 router.delete('/:id/delete', isAuthenticated, async (req, res) => {

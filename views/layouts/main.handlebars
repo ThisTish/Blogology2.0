@@ -25,8 +25,11 @@
 				</div>
 				<div class="pt-2 group">
 					<div class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">dashboard</div>
+					{{#if logged_in}}
 					<a href="/dashboard" class="hidden md:group-hover:block text-white text-3xl">Dashboard</a>
-
+					{{else}}
+					<button type="button" id="d-login-btn" class="hidden md:group-hover:block text-white text-3xl">Dashboard</a>
+					{{/if}}
 				</div>
 			</div>
 		</nav>
@@ -50,7 +53,7 @@
 	<div id="login-modal" class="hidden fixed z-10 inset-0">
 		<div class="flex flex-col items-center justify-start">
 
-			<div class="bg-neutral-700 max-w-md w-full">
+			<div class="bg-neutral-700 w-full">
 				<div class="flex justify-between items-center text-white">
 					<h2 class="text-lg md:text-2xl p-3 space-grotesk">Log In.</h2>
 					<button id="l-close-btn" class="px-3 hover:text-neutral-900 font-bold">&times;</button>
@@ -79,7 +82,7 @@
 	<div id="signup-modal" class="hidden fixed z-10 inset-0">
 		<div class="flex flex-col items-center justify-start">
 
-			<div class="bg-neutral-700 max-w-md w-full">
+			<div class="bg-neutral-700 w-full">
 				<div class="flex justify-between items-center text-white">
 					<h2 class="text-lg md:text-2xl p-3 space-grotesk">Log In.</h2>
 					<button id="s-close-btn" class="px-3 hover:text-neutral-900 font-bold">&times;</button>
@@ -111,7 +114,7 @@
 
 	<footer>
 	</footer>
-	<script src="/js/modals.js"></script>
+	<script src="/js/userModals.js"></script>
 	{{#if logged_in}}
 	<script src="/js/logout.js"></script>
 	{{/if}}

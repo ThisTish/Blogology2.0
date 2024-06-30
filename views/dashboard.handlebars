@@ -20,7 +20,9 @@
 <script src="/js/deleteBlog.js"></script>
 {{/if}}
 
-<div id="new-blog-modal" class="fixed z-10 inset-0 m-auto mt-32 max-w-64 sm:max-w-sm md:max-w-xl lg:max-w-4xl overflow-y-auto">
+{{!-- todo button now working sign up modal broken --}}
+{{!-- new blog modal --}}
+<div id="new-blog-modal" class="fixed hidden z-10 inset-0 m-auto mt-32 max-w-64 sm:max-w-sm md:max-w-xl lg:max-w-4xl overflow-y-auto">
 	<div class="flex flex-col items-center justify-center">
 
 		<div class="bg-neutral-700 w-full">
@@ -43,9 +45,10 @@
 
 			<div class="flex justify-between space-x-2">
 				<button type="button" id="n-cancel-btn" class="font-bold py-2 px-4 bg-neutral-400 text-white hover:text-neutral-950" >Cancel</button>
-				<button type="submit" id="post-blog-btn" class="font-bold py-2 px-4 bg-neutral-600 text-white hover:text-neutral-950" >POST</button>
+				<button type="submit" id="post-blog-btn" class="font-bold py-2 px-4 bg-neutral-600 text-white hover:text-neutral-950" >Post</button>
 			</div>
 
 		</form>
 	</div>
 </div>
+<script src="/js/blogModals.js"></script>
