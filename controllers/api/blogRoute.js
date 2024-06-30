@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const {Blog, Comment, User} = require('../../models')
-const { Sequelize, json } = require('sequelize');
-const isAuthenticated = require('../../utils/authorize');
+const { Sequelize, json } = require('sequelize')
+const isAuthenticated = require('../../utils/authorize')
+const color = require('colors')
 
 // Delete a blog
 router.delete('/:id/delete', isAuthenticated, async (req, res) => {
@@ -106,11 +107,10 @@ router.post('/newBlog', isAuthenticated, async (req, res) => {
 
 // update a blog
 router.put('/:id', isAuthenticated, async (req, res) => {
-	
 	try {
 		const { title, text } = req.body
 		if(!title || !text){
-			console.log(`**********error no content to update**********`)
+			console.log(`*error no content to update*`)
 			return
 		}
 
@@ -121,8 +121,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 			return res.status(404).json({ message: 'No blogs found' })
 		}
 		const newBlog = await blog.update({ title, text })
-		console.log(`blogRouteln124: ${newBlog}`)
-		// res.status(202).json(newBlog)
+		res.status(202).json(newBlog)
 
 	} catch (error) {
 		res.status(500).json({ message: 'Server Error updating post', error })
