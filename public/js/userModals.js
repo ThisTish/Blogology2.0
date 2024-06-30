@@ -18,10 +18,12 @@ loginModalBtn.onclick = () =>{
 	loginModal.classList.add('flex')
 }
 
-// todo seperate so in own if statement
-dLoginModalBtn.onclick = () =>{
-	loginModal.classList.remove('hidden')
-	loginModal.classList.add('flex')
+
+if (dLoginModalBtn) {
+	dLoginModalBtn.onclick = () =>{
+		loginModal.classList.remove('hidden')
+		loginModal.classList.add('flex')
+	}
 }
 
 lCloseBtn.onclick = () =>{
@@ -34,7 +36,7 @@ lCancelBtn.onclick = () =>{
 	loginModal.classList.remove('flex')
 }
 
-// not working. not a big deal atm
+// not working-margin/positioning
 window.onclick = (event) =>{
 	if(event.target == loginModal){
 	loginModal.classList.add('hidden')
@@ -44,9 +46,11 @@ window.onclick = (event) =>{
 
 
 // signup functions
-signupModalBtn.onclick = () =>{
-	signupModal.classList.remove('hidden')
-	signupModal.classList.add('flex')
+if (signupModalBtn) {
+	signupModalBtn.onclick = () =>{
+		signupModal.classList.remove('hidden')
+		signupModal.classList.add('flex')
+	}
 }
 
 sCloseBtn.onclick = () =>{

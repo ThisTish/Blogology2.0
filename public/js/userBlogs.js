@@ -42,13 +42,14 @@ document.addEventListener('DOMContentLoaded', () =>{
 	})
 
 	// submitting new blog
+	if(updateBlogBtn){
 	updateBlogBtn.onclick = (event) => {
 		event.preventDefault()
 		console.log('click update ln 5 editblogjs')
 		const blogId = updateBlogBtn.value
 		updateBlogFunction(blogId)
 	}
-
+}
 	const updateBlogFunction = async (blogId) =>{
 
 		const title = document.querySelector('#edit-title').value
@@ -101,13 +102,17 @@ document.addEventListener('DOMContentLoaded', () =>{
 	}
 
 	// edit blog modal event listeners
+	if(eCloseBtn){
 	eCloseBtn.onclick = () =>{
 		editBlogModal.classList.add('hidden')
 	}
+}
 
+if(eCloseBtn){
 	eCancelBtn.onclick = () =>{
 		editBlogModal.classList.add('hidden')
 	}
+}
 
 	// not working. margins too big(m-auto)
 	window.onclick = (event) =>{

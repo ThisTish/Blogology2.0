@@ -1,42 +1,42 @@
-<div class="blog card">
-	<h2>{{blog.title}}</h2>
-	<p>Created: <em> {{format_date blog.createdAt}} </em></p>
-	{{!-- smaller and italicized --}}
-	<p>{{blog.text}} </p>
-	<p>Created By:{{blog.user.username}}</p>
-	{{!-- <div class="accordion-container"> --}}
-		{{#if blog.comments.length}}
-			<h2>Comments</h2>
-			{{!-- <div class="accordion-body"> --}}
-
-				{{#each blog.comments as |comment|}}
-					<div>
-					<p>{{comment.comment}}</p>
-					<footer>Created: {{format_date createdAt}} Created By: {{user.username}}</footer>
-					</div>
-				{{!-- {{#if owner}} --}}
-				{{!-- todo create util for owner --}}
-					<button class="delete"><a href="/comment/{{id}}/delete"> Delete </a></button>
-				{{!-- {{/if}} --}}
-				{{/each}}
-			{{/if}}
-
-			<div>
-				{{!-- button to open form/input? --}}
-			<form action="/api/blogs/{{blog.blog_id}}/comment" method="POST">
-				<input type="text" name="comment" placeholder="leave your comment here" required>
-				{{!--  change prompt when empty --}}
-				{{#if logged_in}}
-				<button type="submit">Submit Comment</button>
-				{{else}}
-				<button type="button" id="c-login-btn">Submit Comment</button>
-				{{/if}}
-				<button>Clear</button>
-				{{!-- event listener to clear input --}}
-			</form>
+<div class="flex flex-col justify-center p-3 max-w-md mt-7 mx-auto md:p-5 md:max-w-xl lg:max-w-4xl ">
+	<div class="flex flex-col bg-neutral-300 p-2 mb-5 md:p-0 md:pb-2 md:mb-20">
+		<div class="mx-3 mt-2 mb-2 md:mx-10 space-y-5">
+			<div class="flex flex-col items-center justify-between -my-6 mx-10 md:-my-10 p-5 px-3 bg-neutral-600 md:flex-row">
+				<h2 class="text-lg font-bold text-center text-white md:text-left md:text-2xl lg:text-4xl">{{blog.title}}</h2>
+				<div class="flex space-x-2 px-3">
+					<p class="text-center text-base text-neutral-300 md:text-lg">{{blog.user.username}}</p>
+					<p class="text-center text-base text-neutral-300  md:text-lgfont-bold">|</p>
+					<p class="text-center text-base text-neutral-300 md:text-lg">{{format_date blog.createdAt}}</p>
+				</div>
 			</div>
+			<div class="bg-white">
+				<p class=" px-3 py-5 inline-block text-wrap md:leading-loose md:tracking-wide text-sm md:text-base lg:text-lg">{{blog.text}} </p>
+			</div>	
+		</div>
+
+		<div class="flex justify-end mx-3 md:mx-10">
+				{{#if logged_in}}
+			<form action="/api/blogs/{{blog.blog_id}}/comment" method="POST" class="flex w-full">
+				<input type="text" name="comment" placeholder="Comment..." class="flex-grow px-1 py-1 border text-sm  border-neutral-300 focus:outline-none focus:border-neutral-700 md:text-base md:my-3" required >
+				<button type="submit" id="post-comment-btn" class="text-sm font-bold m-1 py-1 px-4 bg-neutral-600 text-white md:text-base md:m-3 hover:text-neutral-950" data-blog-id="{{blog_id}}">Submit</button>
+			</form>
+			{{/if}}
 		</div>
 	</div>
+
+	{{#if blog.comments.length}}
+	{{!-- <div class="flex flex-col justify-center max-w-sm mt-5 mx-auto md:max-w-md xl lg:max-w-2xl space-y-5"> --}}
+			<div class="flex flex-col p-2 mb-9 md:p-0 md:pb-2 md:mb-20">
+
+	{{#each blog.comments as |comment|}}
+		<div class="relative p-5 flex flex-col justify-center">
+			<p class="self-start p-3 z-10 bg-neutral-600 text-white text-wrap text-sm md:self-end lg:text-base">{{comment.comment}}</p>
+			<p class="self-start pt-3 p-1 -mt-3 ml-5 bg-neutral-300 text-neutral-800 text-xs md:self-end md:mr-5 lg:text-sm">{{user.username}} | {{format_date createdAt}}</p>
+		</div>
+	{{/each}}
+	</div>
 </div>
+	{{/if}}
+
 <script src="/js/commentLogin.js"></script>
 {{!-- todo set scripts for c-login and d-login --}}

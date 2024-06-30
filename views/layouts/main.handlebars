@@ -17,14 +17,14 @@
 		<nav class="mx-auto p-6 bg-neutral-700">
 			<div class="flex items-center justify-between">
 				<div class="pt-2 group">
-					<i class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">roofing</i>
+					<a href="/" class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">roofing</a>
 					<a href="/" class="hidden md:group-hover:block text-white text-3xl">Home</a>
 				</div>
 				<div class="pt-2 ">
 					<h1 class=" font-sans p-2 text-2xl md:text-4xl space-grotesk text-neutral-600 bg-white px-2 lg:text-7xl">Blogology 2.0</h1>
 				</div>
 				<div class="pt-2 group">
-					<div class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">dashboard</div>
+					<a href="/dashboard" class="material-icons text-white text-1xl md:text-3xl lg:text-5xl md:group-hover:hidden">dashboard</a>
 					{{#if logged_in}}
 					<a href="/dashboard" class="hidden md:group-hover:block text-white text-3xl">Dashboard</a>
 					{{else}}
@@ -112,12 +112,43 @@
 		</div>
 	</div>
 
+{{!-- new blog modal --}}
+<div id="new-blog-modal" class="fixed hidden z-10 inset-0 m-auto mt-32 max-w-64 sm:max-w-sm md:max-w-xl lg:max-w-4xl overflow-y-auto">
+	<div class="flex flex-col items-center justify-center">
+
+		<div class="bg-neutral-700 w-full">
+			<div class="flex justify-between items-center text-white">
+				<h2 class="text-lg md:text-2xl p-3 space-grotesk">Post Blog</h2>
+				<button id="n-close-btn" class="px-3 hover:text-neutral-900 font-bold">&times;</button>
+			</div>
+		</div>
+
+		<form action="/api/blogs/newBlog" method="POST" class="px-2 py-3 bg-white w-full">
+			<div class="mb-4">
+				<label for="title" class="block text-sm font-medium text-neutral-700">Title</label>
+				<input type="text" id="title" name="title" class="mt-1 block w-full px-3 py-2 border border-neutral-300 focus:outline-none focus:border-neutral-700 text-sm">
+			</div>
+			
+			<div class="mb-4">
+				<label for="text" class="block text-sm font-medium text-neutral-700">Content</label>
+				<textarea type="text" id="text" name="text" class="mt-1 h-32 block w-full px-3 py-2 border border-neutral-300 focus:outline-none focus:border-neutral-700 text-sm"></textarea>
+			</div>
+
+			<div class="flex justify-between space-x-2">
+				<button type="button" id="n-cancel-btn" class="font-bold py-2 px-4 bg-neutral-400 text-white hover:text-neutral-950" >Cancel</button>
+				<button type="submit" id="post-blog-btn" class="font-bold py-2 px-4 bg-neutral-600 text-white hover:text-neutral-950" >Post</button>
+			</div>
+
+		</form>
+	</div>
+</div>
 
 	<footer>
 	</footer>
 	{{!-- todo set d-login button to only load if not logged in --}}
 	<script src="/js/userModals.js"></script>
 	{{#if logged_in}}
+	<script src="/js/userBlogs.js"></script>
 	<script src="/js/logout.js"></script>
 	{{/if}}
 </body>
