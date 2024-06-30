@@ -15,17 +15,17 @@ router.get('/', async (req, res) => {
 					attributes: ['username']
 					// exclude?
 				},
-				{
-					model: Comment,
-					attributes: ['comment', 'user_id', 'createdAt'],
-					include: [
-						{
-							model: User,
-							attributes: ['username']
-							// exclude?
-						}
-					]
-				}
+				// {
+				// 	model: Comment,
+				// 	attributes: ['comment', 'user_id', 'createdAt'],
+				// 	include: [
+				// 		{
+				// 			model: User,
+				// 			attributes: ['username']
+				// 			// exclude?
+				// 		}
+				// 	]
+				// }
 			]
 			
 		})
@@ -56,11 +56,17 @@ router.get('/dashboard', isAuthenticated,  async (req, res) => {
 			},
 			include: [
 				{
-					model: Blog
+					model: Blog,
+					include: [
+						{
+							model:User,
+							attributes: ['username']
+						}
+					]
 				}, 
-				{
-					model: Comment
-				}
+				// {
+				// 	model: Comment
+				// }
 			]
 		})
 		const user = userData.get({plain: true})

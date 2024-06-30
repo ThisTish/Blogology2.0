@@ -64,12 +64,13 @@
 
 //!WHEN I click on any other links in the navigation
 //! THEN I am prompted to either sign up or sign in
-// todo isAuth added to routes to get dashboard & such
+// // isAuth added to routes to get dashboard & such
+// //add alerts
 
 // !WHEN I choose to sign up 
 //! THEN I am prompted to create a username and password
-// TODO  make modal ? 
-	// *or new page? new page right now
+// //  make modal ? 
+	////or new page? new page right now
 // // create signup submit function
 ////finish creating signup.handlebars
 	//	//basic form
@@ -118,7 +119,7 @@
 
 //!WHEN I am signed in to the site
 //! THEN I see navigation links for the homepage, the dashboard, and the option to log out
-// todo {{#if logged_in}} on homepage
+// // {{#if logged_in}} on homepage
 //// WHEN I click on the homepage option in the navigation
 //// THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
 //! WHEN I click on an existing blog post
@@ -206,7 +207,8 @@
 //// THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 //! WHEN I click on one of my existing posts in the dashboard
 //! fills form with values from blog selected.
-// tried:couldn't  create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
+//todo make form & button functions
+// tried:couldn't.  create edit create blog form with "if statements" for inputs to be filled (value = {{info}}) & buttons (edit, cancel, delete)
 // // edit blog route
 //// router.get('/blogs/:id', (req, res)=>{
 //// 	Blog.findByPk(req.params.id)
@@ -230,7 +232,7 @@
 // //THEN I am signed out of the site
 //! WHEN I am idle on the site for more than a set time
 //! THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
-//todo add {{#if logged in's and isAuth}}
+//todo add {{#if logged in}} to createBlog, Edit Blog, Delete Blog
 
 // *ROUTES/ENDPOINTS TO MAKE
 //? generalize into groups?
@@ -263,7 +265,7 @@
 	// comment-form -- used in blog
 
 	// *SUBLAYOUTS
-//   idea dashboard.handlebars//?how would you make another layout if you wanted another skeleton for this?
+//   idea dashboard.handlebars
 //   blogs.handlebars--for each blog of blogs >blog-details
 //   signup.handlebars-- >user-form (buttons based on endpoint?)
 //   login.handlebars--  >user-form (buttons based on endpoint?)
@@ -274,11 +276,11 @@
 
 
 // *js
-	// todo submit login
-	// todo submit logout
-	// todo submit signup
+	// // submit login
+	// // submit logout
+	// // submit signup
 	// todo submit comment
-	// todo submit newBlog
+	// // submit newBlog
 	// todo submit editBlog
 
 // 1. Get database & tables set up
@@ -287,7 +289,7 @@
 // 4. Work on handlebars rendering
 // 5. design
 
-// *remember to serialize-.get({plain:true}) lesson 7
+// remember to serialize-.get({plain:true}) lesson 7
 	// sequelize documentation
 
 // render two projects. one for database, one for front end

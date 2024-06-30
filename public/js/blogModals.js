@@ -4,10 +4,10 @@ const newBlogModalBtn = document.getElementById('new-blog-btn')
 const nCloseBtn = document.getElementById('n-close-btn')
 const nCancelBtn = document.getElementById('n-cancel-btn')
 
-// const signupModal = document.getElementById('signup-modal')
-// const signupModalBtn = document.getElementById('sign-up-btn')
-// const sCloseBtn = document.getElementById('s-close-btn')
-// const sCancelBtn = document.getElementById('s-cancel-btn')
+// const editBlogModal = document.getElementById('edit-blog-modal')
+// const editBlogModalBtn = document.getElementById('edit-blog-btn')
+// const eCloseBtn = document.getElementById('e-close-btn')
+// const eCancelBtn = document.getElementById('e-cancel-btn')
 
 
 // new blog functions
@@ -33,3 +33,27 @@ window.onclick = (event) =>{
 	newBlogModal.classList.remove('flex')
 	}
 }
+
+// // edit blog
+// editBlogModalBtn.onclick = () =>{
+// 	editBlogModal.classList.remove('hidden')
+// 	// editBlogModal.classList.add('flex')
+// }
+
+// eCloseBtn.onclick = () =>{
+// 	editBlogModal.classList.add('hidden')
+// 	// editBlogModal.classList.remove('flex')
+// }
+
+// eCancelBtn.onclick = () =>{
+// 	editBlogModal.classList.add('hidden')
+// 	// editBlogModal.classList.remove('flex')
+// }
+
+// // not working. margins too big(m-auto)
+// window.onclick = (event) =>{
+// 	if(event.target == editBlogModal){
+// 	editBlogModal.classList.add('hidden')
+// 	editBlogModal.classList.remove('flex')
+// 	}
+// }

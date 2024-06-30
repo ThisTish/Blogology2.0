@@ -16,6 +16,7 @@ loginModalBtn.onclick = () =>{
 	loginModal.classList.add('flex')
 }
 
+// todo seperate so in own if statement
 dLoginModalBtn.onclick = () =>{
 	loginModal.classList.remove('hidden')
 	loginModal.classList.add('flex')

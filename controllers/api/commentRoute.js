@@ -4,7 +4,7 @@ const Comment = require('../../models/Comment')
 const Blog = require('../../models/Blog')
 const sequelize = require('sequelize')
 // get all comments
-// ?dunno if needed. or used.
+// ?dunno if needed.
 
 router.get('/', async (req, res) => {
     try {
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-// ?dunno if needed. or used.
+// ?dunno if needed.
 router.put('/:id', async (req, res) => {
     try {
         const comment = await Blog.findByPk(req.params.id)
@@ -36,7 +36,7 @@ router.put('/:id', async (req, res) => {
 })
 
 // delete comment
-// ?dunno if needed. or used.
+// ?dunno if needed.
 
 router.delete('/delete/:id', async (req, res) => {
     const commentId = req.params.id
