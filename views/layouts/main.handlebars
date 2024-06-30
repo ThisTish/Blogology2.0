@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
 	<header>
 		<nav class="mx-auto p-6 bg-neutral-700">
 			<div class="flex items-center justify-between">
@@ -37,7 +38,7 @@
 
 	<section class="hero relative flex flex-col h-72 w-full">
 		{{#if logged_in}}
-			<a  id="logout" href ="#" class="absolute top-0 right-0 p-3 px-6 pt-2 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">Logout</a>
+			<button type="button" id="logout" class="absolute top-0 right-0 p-3 px-6 pt-2 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">Logout</button>
 			<button type="button" id="new-blog-btn" class="absolute top-10 md:top-64 right-0 p-3 px-6 pt-2 md:-mt-3 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">New Post</button>
 		{{else}}
 			<button type="button" id="login-btn" class="p-3 px-6 pt-2 absolute top-0 left-0 text-neutral-700 bg-white opacity-75 font-bold text-xs md:text-base hover:bg-transparent hover:text-white">Log In</button>
@@ -145,7 +146,6 @@
 
 	<footer>
 	</footer>
-	{{!-- todo set d-login button to only load if not logged in --}}
 	<script src="/js/userModals.js"></script>
 	{{#if logged_in}}
 	<script src="/js/userBlogs.js"></script>

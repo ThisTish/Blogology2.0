@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', (event) =>{
 
 const logoutFunction = async (event) =>{
 	event.preventDefault()
-	const response = await fetch('api/users/logout', {
+	
+	const response = await fetch('/api/users/logout', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json'}
 	})
@@ -16,5 +17,4 @@ const logoutFunction = async (event) =>{
 	} else {
 		alert(response.statusText)
 	}
-	
 }

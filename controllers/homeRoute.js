@@ -3,9 +3,8 @@ const {User, Blog, Comment} = require('../models')
 const { Sequelize } = require('sequelize')
 const isAuthenticated = require('../utils/authorize')
 const colors = require('colors')
-const session = require('express-session')
 
-// get & display all blogs
+// get & display all blogs homepage
 router.get('/', async (req, res) => {
 	try {
 		const blogData = await Blog.findAll({
@@ -22,19 +21,16 @@ router.get('/', async (req, res) => {
 				// 		{
 				// 			model: User,
 				// 			attributes: ['username']
-				// 			// exclude?
 				// 		}
 				// 	]
 				// }
 			]
-			
 		})
 		if(!blogData){
 			return 'No blogs found!'
 		}
 
 		const blogs = blogData.map(blog => blog.get({plain: true}))
-		console.log(`Home Route ln 36: logged in: ${req.session.logged_in}`.yellow)
 		res.render('homepage', {
 			blogs,
 			logged_in: req.session.logged_in
@@ -44,7 +40,7 @@ router.get('/', async (req, res) => {
 	}
 })
 
-// check if authorized/loggedin before going to user dashboard
+// get blogs by user dashboard
 router.get('/dashboard', isAuthenticated,  async (req, res) => {
 	
 	try {

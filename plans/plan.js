@@ -1,18 +1,23 @@
-// ideas, jquery
-// ideas tailwind
-// ideas login sign up modal
+// *Extra work
+// todo clean up event listners with querySelectAll and better #if's in handlebars
+	// document.querySelectorAll('.close-btns')-goes on all buttons that close modals-kindof
+	// document.querySelectorAll('.auth-btns')
+	// <button ... class="flex... {{#unless logged_in}} auth-btns {{/unless}}">Dashboard</button>
+// todo connect comment routes to page
+// todo seperate controllers & routes- userRoutes is half set-up to
+// todo better error handeling
+// ?do i still need isAuthenticated
 
-
+// idea jquery
+// //ideas tailwind
+// //ideas login sign up modal
 // idea make blog cards partial so dashboard and homepage show same.-dashboard not showing content
-// todo homepage only needs blog title and date created
+// // homepage only needs blog title and date created
 	//idea, if i make accordion, then add 'add comment as an option and redirect to blog/:id page
-	
-	// design
-// todo add little snippet "Stories, insights, and advice that will transform how you design and build for the web." to homepage
+// idea add little snippet "Stories, insights, and advice that will transform how you design and build for the web." to homepage
 //*format date cool?
 //// username | date
 //*use lorem ipsum examples for blog posts when deployed
-
 
 
 
