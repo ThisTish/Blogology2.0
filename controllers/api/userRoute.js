@@ -20,11 +20,11 @@ async function signup(req, res){
 		}
 		
 		const password = password1
+		username = username.toLowerCase()
 		const user = {
 			username,
 			password
 		}
-				
 		const userData = await User.create(user)
 		await loginSess(req, res, userData)
 		
@@ -40,11 +40,12 @@ router.post('/login', async (req, res) => {
 
 async function login(req, res) {
 	try {
-		const {username, password} = req.body
+		let {username, password} = req.body
 		if(!username || !password){
 			return res.status(400).json({message: 'Please enter a username and password'})
 		}
-		
+
+		username = username.toLowerCase()
 		const userData= await User.findOne({where: {
 			username: username
 		}})

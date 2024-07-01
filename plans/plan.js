@@ -7,6 +7,9 @@
 // todo seperate controllers & routes- userRoutes is half set-up to
 // todo better error handleing
 // todo window eventListener for modals-mix margins/positions
+// todo dark mode
+// todo transparent headers with a gradient background
+
 // ?do i still need isAuthenticated
 
 // idea jquery

@@ -29,9 +29,6 @@ User.init({
 			},
 			notEmpty:{
 				msg: 'Usesrname is required'
-			},
-			isLowercase:{
-				msg: 'Please enter as lowercase'
 			}
 		}
 	},
