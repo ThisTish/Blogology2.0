@@ -62,8 +62,7 @@ User.init({
 	freezeTableName: true,
 	modelName: 'user',
 	underscored: true,
-	timestamps: false,
-	schema: 'blogology'
+	timestamps: false
 })
 
 module.exports = User

@@ -36,8 +36,7 @@ Blog.init(
 	modelName: 'blog',
 	timestamps: true,
 	createdAt: true,
-	updatedAt: false,
-	schema: 'blogology'
+	updatedAt: false
 	}
 )
 
