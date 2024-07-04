@@ -1,3 +1,8 @@
+
+// ! Footer w/ portfolio & github
+
+
+
 // *Extra work
 // todo clean up event listners with querySelectAll and better #if's in handlebars
 	// document.querySelectorAll('.close-btns')-goes on all buttons that close modals-kindof
@@ -9,6 +14,7 @@
 // todo window eventListener for modals-mix margins/positions
 // todo dark mode
 // todo transparent headers with a gradient background
+// todo comment count on blog post on homepage & profile page
 
 // ?do i still need isAuthenticated
 

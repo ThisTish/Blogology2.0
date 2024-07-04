@@ -34,7 +34,8 @@ Comment.init({
 	sequelize,
 	freezeTableName: true,
 	modelName: 'comment',
-	underscored: true
+	underscored: true,
+	schema: 'blogology'
 })
 
 module.exports = Comment
