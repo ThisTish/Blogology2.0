@@ -20,16 +20,16 @@ A CMS-style Blog for developers to share their thoughts and comments
 
 ## 💾 Installation <a id="installation"></a>
 
-Visit the site
+Visit the site [here!](https://blogology2-0.onrender.com)
 
 ## 🖱️ Usage <a id="usage"></a>
 
 ### **Welcome to our CMS-style blog site! Here’s a quick guide to help you get started and make the most of it.**
 
 #### Getting Started
-```
-When you first visit the site, you’ll land on the homepage. Here, you’ll see any blog posts that have already been posted, navigation links to the homepage and the dashboard, and an option to log in or sign up. To gain access to your dashboard, add a post, or post a comment, you must first log in or sign up.
-```
+
+   When you first visit the site, you’ll land on the homepage. Here, you’ll see any blog posts that have already been posted, navigation links to the homepage and the dashboard, and an option to log in or sign up. To gain access to your dashboard, add a post, or post a comment, you must first log in or sign up.
+
 #### Signing Up and Logging In
 
     To get started, you’ll need to sign up by creating a username and password. Just click the sign-up button to save your details and log in. The next time you visit, simply sign in with your username and password.

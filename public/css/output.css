@@ -635,11 +635,6 @@ video {
   margin-bottom: 1.25rem;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .-mt-16 {
   margin-top: -4rem;
 }
@@ -686,6 +681,10 @@ video {
 
 .mt-7 {
   margin-top: 1.75rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .block {
@@ -770,12 +769,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
 .self-start {
@@ -1054,12 +1047,12 @@ video {
     margin: 2.5rem;
   }
 
-  .md\:m-3 {
-    margin: 0.75rem;
-  }
-
   .md\:m-2 {
     margin: 0.5rem;
+  }
+
+  .md\:m-3 {
+    margin: 0.75rem;
   }
 
   .md\:-my-10 {
